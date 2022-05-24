@@ -1,4 +1,4 @@
 plugin:
   start:
-    f: Initializing the plugin
-    done: Plugin initialization complete. ({time}s)
+    localeComplete: Locale initialized successfully.
+    done: Plugin initialization complete. ({time})
