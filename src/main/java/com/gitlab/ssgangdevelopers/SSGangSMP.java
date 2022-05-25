@@ -1,70 +1,40 @@
 package com.gitlab.ssgangdevelopers;
 
-import com.gitlab.ssgangdevelopers.abc.Locale;
+import com.gitlab.ssgangdevelopers.utils.LangUtils;
 import org.bukkit.Bukkit;
-import org.bukkit.configuration.InvalidConfigurationException;
-import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.slf4j.Logger;
 
 import java.io.File;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
-@SuppressWarnings("unused") // Will remove in the future
 public class SSGangSMP extends JavaPlugin {
 
 	private static SSGangSMP INSTANCE;
-	private static YamlConfiguration config;
+	private static FileConfiguration configuration;
 
 	@Override
 	public void onEnable() {
-		boolean useless;
 		long startTime = System.currentTimeMillis();
-		Logger l = getLogger();
-		l.log(Level.INFO, "Starting plugin initialization...");
-		l.log(Level.INFO, "Loading locales...");
-		Locale lang;
-		if (!getDataFolder().exists()) {
-			useless = getDataFolder().mkdirs();
-		}
-		this.saveResource("config.yml", false);
+		Logger logger = getSLF4JLogger(); // Prefer using SLF4J
+
+		logger.info("Starting plugin initialization...");
+
+		logger.info("Loading configuration...");
+		getConfig().options().copyDefaults();
+		saveDefaultConfig();
+		configuration = getConfig();
+
+		logger.info("Loading locales...");
 		this.saveResource("messages-en.yml", false);
+		LangUtils.load(new File(getDataFolder(), "messages-" + getConfig().getString("language") + ".yml"));
 
-		l.log(Level.INFO, "Loading configuration...");
-		try {
-			File configFile = new File(getDataFolder(), "config.yml");
-			if (!configFile.exists()) {
-				useless = configFile.createNewFile();
-			}
-			config = new YamlConfiguration();
-			config.load(configFile);
-		} catch (IOException | InvalidConfigurationException e) {
-			l.log(Level.SEVERE, "Error loading configuration. The plugin will shut down.");
-			e.printStackTrace();
-			selfDestruct();
-			return;
-		}
-		l.log(Level.INFO, "Configuration loaded.");
+		logger.info(LangUtils.get("plugin.start.localeComplete"));
 
-		l.log(Level.INFO, "Loading locales '" + config.get("language") + "'...");
-		try {
-			lang = new Locale(new File(getDataFolder(), "messages-" + config.get("language") + ".yml"));
-		} catch (IOException | InvalidConfigurationException e) {
-			l.log(Level.SEVERE, "Error loading locale. The plugin will shut down.");
-			e.printStackTrace();
-			selfDestruct();
-			return;
-		}
-		l.log(Level.INFO, lang.get("plugin.start.localeComplete"));
-
-		l.log(Level.INFO,
-			lang.get(
-				"plugin.start.done",
-				new String[]{"time", (System.currentTimeMillis() - startTime) + "ms"}
-			)
-		);
-		INSTANCE = this;
+		logger.info(LangUtils.get(
+						"plugin.start.done",
+						new String[]{"time", (System.currentTimeMillis() - startTime) + "ms"}
+		));
 	}
 
 	@Override
@@ -72,12 +42,16 @@ public class SSGangSMP extends JavaPlugin {
 		super.onDisable();
 	}
 
+	public SSGangSMP() {
+		INSTANCE = this;
+	}
+
 	public static SSGangSMP getInstance() {
 		return INSTANCE;
 	}
 
-	public static YamlConfiguration getConfiguration() {
-		return config;
+	public static FileConfiguration getConfiguration() {
+		return configuration;
 	}
 
 	/**

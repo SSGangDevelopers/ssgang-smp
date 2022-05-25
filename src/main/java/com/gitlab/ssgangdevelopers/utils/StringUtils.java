@@ -2,8 +2,6 @@ package com.gitlab.ssgangdevelopers.utils;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.util.List;
-
 public class StringUtils {
 	/**
 	 * Replaces the placeholder in string with their respective provided values.
@@ -14,14 +12,12 @@ public class StringUtils {
 	 */
 	@NotNull
 	public static String replacePlaceholders(@NotNull String s, @NotNull String[]... keypair) {
-		String res = s;
 		for (String[] kp : keypair) {
-			List<String> rkp = List.of(kp);
 			if (kp.length < 2) {
 				continue;
 			}
-			res = res.replace(String.format("{%s}", rkp.get(0)), rkp.get(1));
+			s = s.replace(String.format("{%s}", kp[0]), kp[1]);
 		}
-		return res;
+		return s;
 	}
 }
