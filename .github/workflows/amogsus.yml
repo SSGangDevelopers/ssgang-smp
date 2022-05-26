@@ -26,7 +26,7 @@ jobs:
       - name: Moving generated artifacts
         run: |
           mkdir staging
-          cp libs/*.jar staging
+          cp build/libs/*.jar staging
       - name: Uploading artifacts
         uses: actions/upload-artifact@v3.0.0
         with:
