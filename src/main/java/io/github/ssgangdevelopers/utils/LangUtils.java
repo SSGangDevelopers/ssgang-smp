@@ -31,7 +31,7 @@ public class LangUtils {
 				plugin.getSLF4JLogger().warn("Preferred lang file could not loaded, using default lang file.");
 				mainHandle(new File(plugin.getDataFolder(), DEFAULT_FILE_NAME));
 			} else {
-				plugin.getSLF4JLogger().error("Could not load default lang file, disabling plugin.");
+				plugin.getSLF4JLogger().error("Could not load default lang file, disabling plugin...");
 				SSGangSMP.selfDestruct();
 			}
 		}

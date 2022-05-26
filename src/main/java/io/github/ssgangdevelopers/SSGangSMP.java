@@ -7,6 +7,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.slf4j.Logger;
 
 import java.io.File;
+import java.io.IOException;
 
 public class SSGangSMP extends JavaPlugin {
 
@@ -26,15 +27,24 @@ public class SSGangSMP extends JavaPlugin {
 		configuration = getConfig();
 
 		logger.info("Loading locales...");
-		this.saveResource("messages-en.yml", false);
-		LangUtils.load(new File(getDataFolder(), "messages-" + getConfig().getString("language") + ".yml"));
+		try {
+			if (new File(getDataFolder(), "messages-en.yml").createNewFile()) {
+				this.saveResource("messages-en.yml", true);
+			}
+			LangUtils.load(new File(getDataFolder(), "messages-" + getConfig().getString("language") + ".yml"));
+		} catch (IOException e) {
+			logger.error("An error occurred when save default language file, disabling plugin...", e);
+			selfDestruct();
+		}
 
-		logger.info(LangUtils.get("plugin.start.localeComplete"));
+		if (this.isEnabled()) {
+			logger.info(LangUtils.get("plugin.start.localeComplete"));
 
-		logger.info(LangUtils.get(
-						"plugin.start.done",
-						new String[]{"time", (System.currentTimeMillis() - startTime) + "ms"}
-		));
+			logger.info(LangUtils.get(
+							"plugin.start.done",
+							new String[]{"time", (System.currentTimeMillis() - startTime) + "ms"}
+			));
+		}
 	}
 
 	@Override
