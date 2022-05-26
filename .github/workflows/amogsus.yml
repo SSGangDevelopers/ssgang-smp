@@ -16,7 +16,10 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
           cache: gradle
-      - name: Gradle Build Action
+      - name: Prepare Gradle
+        run: |
+          chmod +x gradlew
+      - name: Gradle build
         uses: gradle/gradle-build-action@v2.2.0-beta.1
         with:
           arguments: build
