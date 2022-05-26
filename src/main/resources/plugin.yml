@@ -1,5 +1,5 @@
 name: SSGangSMP
 version: '${version}'
-main: com.gitlab.ssgangdevelopers.SSGangSMP
+main: io.github.ssgangdevelopers.SSGangSMP
 api-version: 1.18
 load: STARTUP

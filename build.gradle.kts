@@ -1,9 +1,9 @@
 plugins {
-	id("java") // Plugin mainly writen in Java
+	id("java") // Plugin mainly written in Java
 	id("com.github.johnrengelman.shadow") version "7.1.2" // Include JDA into jar file
 }
 
-group = "com.gitlab.ssgangdevelopers" // Gitlab group link: https://gitlab.com/ssgangdevelopers/
+group = "io.github.ssgangdevelopers" // Organization link: https://github.com/SSGangDevelopers
 version = "1.0.0_dev" // Semantic versioning: https://semver.org/
 
 repositories {

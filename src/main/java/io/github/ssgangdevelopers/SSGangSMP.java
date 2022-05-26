@@ -1,6 +1,6 @@
-package com.gitlab.ssgangdevelopers;
+package io.github.ssgangdevelopers;
 
-import com.gitlab.ssgangdevelopers.utils.LangUtils;
+import io.github.ssgangdevelopers.utils.LangUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;

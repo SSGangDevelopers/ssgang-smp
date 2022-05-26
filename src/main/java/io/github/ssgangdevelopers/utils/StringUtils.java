@@ -1,4 +1,4 @@
-package com.gitlab.ssgangdevelopers.utils;
+package io.github.ssgangdevelopers.utils;
 
 import org.jetbrains.annotations.NotNull;
 

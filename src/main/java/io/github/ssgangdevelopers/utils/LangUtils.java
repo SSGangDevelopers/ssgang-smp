@@ -1,6 +1,6 @@
-package com.gitlab.ssgangdevelopers.utils;
+package io.github.ssgangdevelopers.utils;
 
-import com.gitlab.ssgangdevelopers.SSGangSMP;
+import io.github.ssgangdevelopers.SSGangSMP;
 import org.jetbrains.annotations.NotNull;
 import org.yaml.snakeyaml.Yaml;
 
