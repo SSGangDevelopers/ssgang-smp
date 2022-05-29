@@ -17,19 +17,24 @@ public class LangUtils {
 	private static final String DEFAULT_FILE_NAME = "messages-en.yml";
 	private static final HashMap<String, Object> data = new HashMap<>();
 
+	/**
+	 * Set language file for this util.
+	 *
+	 * @param file Language file to load.
+	 */
 	public static void load(@NotNull File file) {
 		SSGangSMP.getInstance().getSLF4JLogger().info("Loading language properties from {}", file.getName());
-		mainHandle(file);
+		checkAndLoad(file);
 	}
 
-	private static void mainHandle(@NotNull File file) {
+	private static void checkAndLoad(@NotNull File file) {
 		SSGangSMP plugin = SSGangSMP.getInstance();
 		try {
 			data.putAll(new Yaml().load(new FileReader(file, StandardCharsets.UTF_8)));
 		} catch (IOException e) {
 			if (!file.getName().equals(DEFAULT_FILE_NAME)) {
 				plugin.getSLF4JLogger().warn("Preferred lang file could not loaded, using default lang file.");
-				mainHandle(new File(plugin.getDataFolder(), DEFAULT_FILE_NAME));
+				checkAndLoad(new File(plugin.getDataFolder(), DEFAULT_FILE_NAME));
 			} else {
 				plugin.getSLF4JLogger().error("Could not load default lang file, disabling plugin...");
 				SSGangSMP.selfDestruct();
@@ -63,7 +68,7 @@ public class LangUtils {
 	 *
 	 * @param identifier the string's identifier.
 	 * @param keypair    the keypair, organized like this: {@code {"key1", "val1"}, {"key2", "val2"}, ...}
-	 * @return the string got from the language file.
+	 * @return the string got from the language file with replaced placeholder.
 	 */
 	@NotNull
 	public static String get(@NotNull String identifier, String[]... keypair) {

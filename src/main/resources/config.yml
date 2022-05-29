@@ -4,3 +4,9 @@
 
 # The language used in the plugin.
 language: en
+
+# Discord bot token
+botToken: ''
+
+# Channel where bot will listen for message and send new message to it
+chatChannelId: ''

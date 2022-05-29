@@ -21,6 +21,8 @@ repositories {
 dependencies {
 	compileOnly("io.papermc.paper:paper-api:1.18.2-R0.1-SNAPSHOT") // API used for development
 	compileOnly("org.apache.logging.log4j:log4j-core:2.17.2") // For logs filter
+	compileOnly("org.projectlombok:lombok:1.18.24") // For code shorten
+	annotationProcessor("org.projectlombok:lombok:1.18.24")
 
 	implementation("net.dv8tion:JDA:4.4.0_352") {
 		exclude("club.minnced", "opus-java") // Bot is text-only
@@ -31,6 +33,8 @@ dependencies {
 
 //	testImplementation("org.junit.jupiter:junit-jupiter-api:5.8.2")
 //	testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.8.2")
+//	testCompileOnly("org.projectlombok:lombok:1.18.24")
+//	testAnnotationProcessor("org.projectlombok:lombok:1.18.24")
 }
 
 java {
