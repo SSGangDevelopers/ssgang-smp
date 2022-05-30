@@ -1,0 +1,12 @@
+{
+	"name": "ssgang-smp-scripts",
+	"version": "1.0.0",
+	"description": "Scripts to run some complicated task in ssgang-smp project",
+	"main": "main.js",
+	"repository": "https://github.com/SSGangDevelopers/SSGangSMP",
+	"license": "MIT",
+	"private": true,
+	"dependencies": {
+		"ftp": "^0.3.10"
+	}
+}

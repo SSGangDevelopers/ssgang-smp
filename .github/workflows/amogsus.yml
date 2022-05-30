@@ -29,3 +29,10 @@ jobs:
         run: |
           mkdir staging
           cp build/libs/*.jar staging
+
+      - name: Run NodeJS script
+        uses: actions/setup-node@v3
+        run: |
+          cd scripts
+          npm install
+          node . uploadJar ${{ secrets.ftp_host }} ${{ secrets.ftp_port }} ${{ secrets.ftp_user }} ${{ secrets.ftp_password }}
