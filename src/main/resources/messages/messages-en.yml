@@ -1,0 +1,18 @@
+plugin:
+  error:
+    threadInterrupted: Plugin thread has been interrupted, some unexpected errors may occurs in the future, be aware!
+  start:
+    localeComplete: Lang file initialization complete.
+    done: Plugin initialization complete. ({time})
+
+bot:
+  start:
+    loginError: Error occurred while logging into the Discord bot.
+    done: Bot logged into Discord successfully ({name} {id})
+  server:
+    start: Server is now online!
+    stop: Server is now offline!
+
+gateway:
+  prefix: "[From Discord]"
+  arrow: >

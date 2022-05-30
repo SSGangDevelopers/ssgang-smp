@@ -1,0 +1,18 @@
+plugin:
+  error:
+    threadInterrupted: Tiến cìn' kủa pluzn dã bị kản cở, pluzn kó wể sẽ gặp n'ữq lỗi kì lạ. Hãy cú ý!
+  start:
+    localeComplete: Wiết lập qôn qữ wàn' kôq.
+    done: Pluzn dã dượk xởi dộq wàn' kôq. ({time})
+
+bot:
+  start:
+    loginError: Dã xảy za lỗi xi dăq n'ập vào Ziskozz.
+    done: Bot dã dăq n'ập vào Ziskozz wàn' kôq ({name} {id})
+  server:
+    start: Sezvez daq online!
+    stop: Sezvez daq offline!
+
+gateway:
+  prefix: "[Từ Discord]"
+  arrow: >

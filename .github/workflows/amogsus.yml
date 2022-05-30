@@ -1,7 +1,9 @@
+name: amogsus
+
 on:
   push:
     # branches: [ main ]
-    branches-ignore: [ '**' ] # Temporarily disable this action
+    branches-ignore: [ '**' ] # Temporarily disables this action
 
 jobs:
   build:

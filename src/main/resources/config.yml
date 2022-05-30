@@ -6,7 +6,7 @@
 language: en
 
 # Discord bot token
-botToken: ''
+botToken: ""
 
 # Channel where bot will listen for message and send new message to it
-chatChannelId: ''
+chatChannelId: ""

@@ -1,0 +1,18 @@
+plugin:
+  error:
+    threadInterrupted: Tiến trình của plugin đã bị cản trở, plugin có thể sẽ gặp những lỗi kì lạ. Hãy chú ý!
+  start:
+    localeComplete: Thiết lập ngôn ngữ thành công.
+    done: Plugin đã được khởi động thành công. ({time})
+
+bot:
+  start:
+    loginError: Đã xảy ra lỗi khi đăng nhập vào Discord.
+    done: Bot đã đăng nhập vào Discord thành công ({name} {id})
+  server:
+    start: Server đang online!
+    stop: Server đang offline!
+
+gateway:
+  prefix: "[Từ Discord]"
+  arrow: >

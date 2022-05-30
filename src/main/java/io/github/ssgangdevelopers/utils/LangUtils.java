@@ -14,7 +14,7 @@ import java.util.HashMap;
  * Represents a LangUtils to get localized display messages.
  */
 public class LangUtils {
-	private static final String DEFAULT_FILE_NAME = "messages-en.yml";
+	private static final String DEFAULT_FILE_NAME = "messages/messages-en.yml";
 	private static final HashMap<String, Object> data = new HashMap<>();
 
 	/**
@@ -36,7 +36,7 @@ public class LangUtils {
 				plugin.getSLF4JLogger().warn("Preferred lang file could not loaded, using default lang file.");
 				checkAndLoad(new File(plugin.getDataFolder(), DEFAULT_FILE_NAME));
 			} else {
-				plugin.getSLF4JLogger().error("Could not load default lang file, disabling plugin...");
+				plugin.getSLF4JLogger().error("Could not load default language file, the plugin will be disabled as a result.");
 				SSGangSMP.selfDestruct();
 			}
 		}

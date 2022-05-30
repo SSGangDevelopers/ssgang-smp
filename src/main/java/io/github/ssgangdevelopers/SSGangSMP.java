@@ -41,25 +41,45 @@ public class SSGangSMP extends JavaPlugin {
 		saveDefaultConfig();
 		// Load config - End
 
-		// Load lang - Start
+		// Load locale - Start
 		logger.info("Loading locales...");
-		try {
-			if (new File(getDataFolder(), "messages-en.yml").createNewFile()) {
-				this.saveResource("messages-en.yml", true);
-			}
-			LangUtils.load(new File(getDataFolder(), "messages-" + getConfig().getString("language") + ".yml"));
-		} catch (IOException e) {
-			logger.error("An error occurred when save default language file, disabling plugin...", e);
-			selfDestruct();
-		}
+		initLocaleFiles();
+		File messagesFolder = new File(getDataFolder(), "messages");
+		LangUtils.load(new File(messagesFolder, "messages-" + getConfig().getString("language") + ".yml"));
 
-		if (!this.isEnabled()) return; // Stop onEnable() if lang file is loaded failed
+		if (!this.isEnabled()) return; // Stop onEnable() if locale file fails to load
 
 		logger.info(LangUtils.get("plugin.start.localeComplete"));
-		// Load lang - End
+		// Load locale - End
 
-		// Setup Discord bot - Start
-		Runnable discordBotSetup = () -> {
+		// Load JDA - Start
+		initDiscord();
+
+		// Plugin initialization complete
+		logger.info(LangUtils.get(
+						"plugin.start.done",
+						new String[]{"time", (System.currentTimeMillis() - startTime) + "ms"}
+		));
+	}
+
+	@Override
+	public void onDisable() {
+		EmbedBuilder embedBuilder = new EmbedBuilder();
+		embedBuilder.setColor(ColorUtils.DISCORD.RED);
+		embedBuilder.setTitle(LangUtils.get("bot.server.stop"));
+		chatChannel.sendMessageEmbeds(embedBuilder.build()).queue();
+		jda.shutdown();
+	}
+
+	/**
+	 * Initialize Discord bot.
+	 */
+	public void initDiscord() {
+		if (getConfig().get("botToken") == "") {
+			getSLF4JLogger().error("Bot token is not set in config.yml, ALL DISCORD INTEGRATION WILL BE DISABLED!");
+			return;
+		}
+		getServer().getScheduler().runTask(this, () -> {
 			String token = getConfig().getString("botToken");
 			assert token != null;
 			String chatChannelId = getConfig().getString("chatChannelId");
@@ -90,25 +110,39 @@ public class SSGangSMP extends JavaPlugin {
 			embedBuilder.setColor(ColorUtils.DISCORD.GREEN);
 			embedBuilder.setTitle(LangUtils.get("bot.server.start"));
 			chatChannel.sendMessageEmbeds(embedBuilder.build()).queue();
-		};
-		getServer().getScheduler().runTask(this, discordBotSetup);
-		// Setup Discord bot - End
-
-		// Plugin init complete
-		logger.info(LangUtils.get(
-						"plugin.start.done",
-						new String[]{"time", (System.currentTimeMillis() - startTime) + "ms"}
-		));
+			getSLF4JLogger().info(
+							LangUtils.get(
+											"bot.start.done",
+											new String[]{"name", jda.getSelfUser().getName()},
+											new String[]{"id", "#" + jda.getSelfUser().getId()}
+							));
+		});
 	}
 
-	@Override
-	public void onDisable() {
-		EmbedBuilder embedBuilder = new EmbedBuilder();
-		embedBuilder.setColor(ColorUtils.DISCORD.RED);
-		embedBuilder.setTitle(LangUtils.get("bot.server.stop"));
-		chatChannel.sendMessageEmbeds(embedBuilder.build()).queue();
-		jda.shutdown();
+	/**
+	 * Ensures the languages files are present.
+	 */
+	public void initLocaleFiles() {
+		File messagesFolder = new File(getDataFolder(), "messages");
+		if (!messagesFolder.exists()) {
+			boolean dumpster = messagesFolder.mkdirs();
+		}
+
+		try {
+			if (new File(messagesFolder, "messages-en.yml").createNewFile()) {
+				this.saveResource("messages/messages-en.yml", true);
+			}
+			if (new File(messagesFolder, "messages-vi.yml").createNewFile()) {
+				this.saveResource("messages/messages-vi.yml", true);
+			}
+			if (new File(messagesFolder, "messages-vicc.yml").createNewFile()) {
+				this.saveResource("messages/messages-vicc.yml", true);
+			}
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
 	}
+
 
 	public static SSGangSMP getInstance() {
 		return getPlugin(SSGangSMP.class);

@@ -2,6 +2,8 @@ package io.github.ssgangdevelopers.listeners;
 
 import io.github.ssgangdevelopers.SSGangSMP;
 import io.github.ssgangdevelopers.utils.ColorUtils;
+import io.github.ssgangdevelopers.utils.DiscordUtils;
+import io.github.ssgangdevelopers.utils.LangUtils;
 import io.github.ssgangdevelopers.utils.StringUtils;
 import io.papermc.paper.event.player.AsyncChatEvent;
 import net.dv8tion.jda.api.JDA;
@@ -43,12 +45,17 @@ public class ChatBridging extends ListenerAdapter implements Listener {
 
 	@Override
 	public void onGuildMessageReceived(@NotNull GuildMessageReceivedEvent e) {
-		final Component MINECRAFT_PREFIX = Component.text("[From Discord]").color(ColorUtils.MINECRAFT.AQUA);
-		final Component MINECRAFT_ARROW = Component.text(">").color(ColorUtils.MINECRAFT.YELLOW);
+		final Component MINECRAFT_PREFIX = Component.text(LangUtils.get("gateway.prefix")).color(ColorUtils.MINECRAFT.AQUA);
+		final Component MINECRAFT_ARROW = Component.text(LangUtils.get("gateway.arrow")).color(ColorUtils.MINECRAFT.YELLOW);
 
 		if (checkMsgFromDiscord(e.getMessage())) return;
 		String msg = e.getMessage().getContentDisplay();
-		String sender = e.getMember().getNickname() != null ? e.getMember().getNickname() : e.getAuthor().getName();
+		String sender;
+	  if (e.getMember() != null && e.getMember().getNickname() != null) {
+			sender = e.getMember().getNickname();
+	  } else {
+			sender = e.getAuthor().getName();
+	  }
 
 		plugin.getServer().broadcast(
 						Component.empty()
@@ -85,9 +92,20 @@ public class ChatBridging extends ListenerAdapter implements Listener {
 	}
 
 	private String processMsg(String original) {
-		// Override to original goes here
-		// TODO Filter some message like <@id>, <@!id>, ...
-		return original;
+		String output = original;
+		output = output.replace("@everyone", "`@everyone`");
+		List<String> separatedText = List.of(output.split(" "));
+		for (String i : separatedText) {
+			// Converting normal ping text into real pings.
+			if (i.startsWith("@")) {
+				String userID = DiscordUtils.getIdFromUsername(i.substring(1));
+				if (userID != null) {
+					output = output.replace(i, "<@!" + userID + ">");
+				}
+			// TODO - Convert channels with "#" prefix to Discord Channels.
+			}
+		}
+		return output;
 	}
 
 	/* From Minecraft to Discord - End */
