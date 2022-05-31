@@ -83,7 +83,7 @@ public class ChatBridging extends ListenerAdapter implements Listener {
 
 	@EventHandler(priority = EventPriority.MONITOR)
 	public void onNewChat(AsyncChatEvent e) {
-		final String DISCORD_ARROW = "**>**";
+		final String DISCORD_ARROW = "**" + LangUtils.get("gateway.arrow") + "**";
 
 		String msg = processMsg(StringUtils.serializeComponent(e.message()));
 		String sender = StringUtils.serializeComponent(e.getPlayer().displayName());
@@ -95,14 +95,22 @@ public class ChatBridging extends ListenerAdapter implements Listener {
 		String output = original;
 		output = output.replace("@everyone", "`@everyone`");
 		List<String> separatedText = List.of(output.split(" "));
+
 		for (String i : separatedText) {
 			// Converting normal ping text into real pings.
 			if (i.startsWith("@")) {
 				String userID = DiscordUtils.getIdFromUsername(i.substring(1));
 				if (userID != null) {
-					output = output.replace(i, "<@!" + userID + ">");
+					output = output.replace(i, "<@" + userID + ">");
 				}
-			// TODO - Convert channels with "#" prefix to Discord Channels.
+			}
+
+			// Converting normal channel 'ping' to real 'ping'.
+			if (i.startsWith("#")) {
+				String channelID = DiscordUtils.getIdFromChannelName(i.substring(1));
+				if (channelID != null) {
+					output = output.replace(i, "<#" + channelID + ">");
+				}
 			}
 		}
 		return output;

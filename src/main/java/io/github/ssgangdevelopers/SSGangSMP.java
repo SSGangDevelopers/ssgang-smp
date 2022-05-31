@@ -18,7 +18,6 @@ import org.slf4j.Logger;
 
 import javax.security.auth.login.LoginException;
 import java.io.File;
-import java.io.IOException;
 import java.util.Arrays;
 
 public class SSGangSMP extends JavaPlugin {
@@ -53,7 +52,8 @@ public class SSGangSMP extends JavaPlugin {
 		// Load locale - End
 
 		// Load JDA - Start
-		initDiscord();
+		getServer().getScheduler().runTaskAsynchronously(this, this::initDiscord); // run asynchronously to optimize plugin load speed
+		// Load JDA - End
 
 		// Plugin initialization complete
 		logger.info(LangUtils.get(
@@ -75,13 +75,12 @@ public class SSGangSMP extends JavaPlugin {
 	 * Initialize Discord bot.
 	 */
 	public void initDiscord() {
-		if (getConfig().get("botToken") == "") {
+		String botToken = getConfig().getString("botToken");
+		if (botToken == null || botToken.length() == 0) {
 			getSLF4JLogger().error("Bot token is not set in config.yml, ALL DISCORD INTEGRATION WILL BE DISABLED!");
 			return;
 		}
 		getServer().getScheduler().runTask(this, () -> {
-			String token = getConfig().getString("botToken");
-			assert token != null;
 			String chatChannelId = getConfig().getString("chatChannelId");
 			assert chatChannelId != null;
 
@@ -92,7 +91,7 @@ public class SSGangSMP extends JavaPlugin {
 								.disableCache(Arrays.asList(CacheFlag.values()))
 								.setChunkingFilter(ChunkingFilter.NONE)
 								.setLargeThreshold(20)
-								.setToken(token)
+								.setToken(botToken)
 								.build()
 								.awaitReady();
 			} catch (LoginException e) {
@@ -124,22 +123,14 @@ public class SSGangSMP extends JavaPlugin {
 	 */
 	public void initLocaleFiles() {
 		File messagesFolder = new File(getDataFolder(), "messages");
-		if (!messagesFolder.exists()) {
-			boolean dumpster = messagesFolder.mkdirs();
-		}
-
-		try {
-			if (new File(messagesFolder, "messages-en.yml").createNewFile()) {
-				this.saveResource("messages/messages-en.yml", true);
-			}
-			if (new File(messagesFolder, "messages-vi.yml").createNewFile()) {
-				this.saveResource("messages/messages-vi.yml", true);
-			}
-			if (new File(messagesFolder, "messages-vicc.yml").createNewFile()) {
-				this.saveResource("messages/messages-vicc.yml", true);
-			}
-		} catch (IOException e) {
-			throw new RuntimeException(e);
+		if (messagesFolder.mkdir()) {
+			this.saveResource("messages/messages-en.yml", true);
+			this.saveResource("messages/messages-vi.yml", true);
+			this.saveResource("messages/messages-vicc.yml", true);
+		} else {
+			this.saveResource("messages/messages-en.yml", false);
+			this.saveResource("messages/messages-vi.yml", false);
+			this.saveResource("messages/messages-vicc.yml", false);
 		}
 	}
 

@@ -10,7 +10,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - name: Check out repository
+        uses: actions/checkout@v3
 
       - name: Set up JDK 17
         uses: actions/setup-java@v3
@@ -31,10 +32,3 @@ jobs:
         run: |
           mkdir staging
           cp build/libs/*.jar staging
-
-      - name: Run NodeJS script
-        uses: actions/setup-node@v3
-        run: |
-          cd scripts
-          npm install
-          node . uploadJar ${{ secrets.ftp_host }} ${{ secrets.ftp_port }} ${{ secrets.ftp_user }} ${{ secrets.ftp_password }}
