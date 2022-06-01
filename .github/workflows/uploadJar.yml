@@ -1,4 +1,4 @@
-name: amogsus
+name: Upload jar to server
 
 on:
   push:
@@ -28,7 +28,13 @@ jobs:
         run: |
           gradlew shadowJar
 
-      - name: Moving generated artifacts
+      - name: Set up NodeJS
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - name: Upload jar to server
         run: |
-          mkdir staging
-          cp build/libs/*.jar staging
+          cd /scripts/uploadJar
+          npm i -y
+          node . ${{ secrets.sftp_host }} ${{ secrets.sftp_port }} ${{ secrets.sftp_user }} ${{ secrets.sftp_password }}

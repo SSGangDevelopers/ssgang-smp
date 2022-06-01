@@ -38,5 +38,5 @@ bin/
 ### Mac OS ###
 .DS_Store
 
-### Development's folders ###
-staging
+### NodeJS dependencies ###
+scripts/**/node_modules
