@@ -1,6 +1,7 @@
 name: Upload jar to server
 
 on:
+  workflow_dispatch:
   push:
     # branches: [ main ]
     branches-ignore: [ '**' ] # Temporarily disables this action
