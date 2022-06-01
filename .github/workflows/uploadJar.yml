@@ -37,6 +37,6 @@ jobs:
 
       - name: Upload jar to server
         run: |
-          cd /scripts/uploadJar
+          cd scripts/uploadJar
           npm i -y
           node . ${{ secrets.sftp_host }} ${{ secrets.sftp_port }} ${{ secrets.sftp_user }} ${{ secrets.sftp_password }}
