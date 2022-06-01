@@ -26,8 +26,9 @@ jobs:
           chmod +x gradlew
 
       - name: Generate jar file
-        run: |
-          gradlew shadowJar
+        uses: gradle/gradle-build-action@v2
+        with:
+          arguments: shadowJar
 
       - name: Set up NodeJS
         uses: actions/setup-node@v3
