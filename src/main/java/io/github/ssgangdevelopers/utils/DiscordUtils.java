@@ -7,16 +7,27 @@ import net.dv8tion.jda.api.entities.Member;
 
 import javax.annotation.Nullable;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicReference;
 
 public class DiscordUtils {
 
-	private static Guild guild;
+	private static final AtomicReference<Guild> guild = new AtomicReference<>();
+
+	public static void init() {
+		SSGangSMP plugin = SSGangSMP.getInstance();
+		guild.set(plugin.getChatChannel().getGuild());
+		plugin.getServer().getScheduler().runTaskTimer(
+						plugin,
+						() -> guild.set(plugin.getJda().getGuildById(guild.get().getId())),
+						60*20, // Run per minute
+						60
+		);
+	}
 
 	private static void checkAndUpdateGuild() {
-		if (guild == null) {
-			guild = SSGangSMP.getInstance().getChatChannel().getGuild();
+		if (guild.get() == null) {
+			init();
 		}
-		guild = SSGangSMP.getInstance().getJda().getGuildById(guild.getId()); // Stay up-to-date
 	}
 
 	/**
@@ -28,7 +39,7 @@ public class DiscordUtils {
 	@Nullable
 	public static String getIdFromUsername(String username) {
 		checkAndUpdateGuild();
-		List<Member> userList = guild.getMembers();
+		List<Member> userList = guild.get().getMembers();
 		for (Member member : userList) {
 			if ((member.getNickname() != null && member.getNickname().equals(username)) || member.getUser().getName().equals(username))
 				return member.getId();
@@ -45,7 +56,7 @@ public class DiscordUtils {
 	@Nullable
 	public static String getIdFromChannelName(String name) {
 		checkAndUpdateGuild();
-		List<GuildChannel> channels = guild.getChannels();
+		List<GuildChannel> channels = guild.get().getChannels();
 		for (GuildChannel channel : channels) {
 			if (channel.getName().equals(name))
 				return channel.getId();
