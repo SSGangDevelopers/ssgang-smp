@@ -21,14 +21,9 @@ jobs:
           distribution: 'temurin'
           cache: gradle
 
-      - name: Prepare Gradle
-        run: |
-          chmod +x gradlew
-
       - name: Generate jar file
-        uses: gradle/gradle-build-action@v2
-        with:
-          arguments: shadowJar
+        run: |
+          ./gradlew shadowJar
 
       - name: Set up NodeJS
         uses: actions/setup-node@v3
