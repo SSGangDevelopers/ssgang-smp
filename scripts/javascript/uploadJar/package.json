@@ -4,7 +4,8 @@
   "main": "main.js",
   "type": "module",
   "dependencies": {
-    "ssh2-sftp-client": "^8.1.0"
+    "js-scripts": "file:..",
+    "ssh2-sftp-client": ">=8.1.0"
   },
   "scripts": {
     "start": "node ."

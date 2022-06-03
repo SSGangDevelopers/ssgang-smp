@@ -40,3 +40,4 @@ bin/
 
 ### NodeJS dependencies ###
 scripts/**/node_modules
+scripts/javascript/**/package-lock.json
