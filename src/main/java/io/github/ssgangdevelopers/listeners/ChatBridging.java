@@ -51,11 +51,11 @@ public class ChatBridging extends ListenerAdapter implements Listener {
 		if (checkMsgFromDiscord(e.getMessage())) return;
 		String msg = e.getMessage().getContentDisplay();
 		String sender;
-	  if (e.getMember() != null && e.getMember().getNickname() != null) {
+		if (e.getMember() != null && e.getMember().getNickname() != null) {
 			sender = e.getMember().getNickname();
-	  } else {
+		} else {
 			sender = e.getAuthor().getName();
-	  }
+		}
 
 		plugin.getServer().broadcast(
 						Component.empty()

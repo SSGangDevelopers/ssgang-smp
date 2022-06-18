@@ -1,5 +1,5 @@
 {
-  "name": "js-scripts",
-  "main": "main.js",
-  "type": "module"
+	"name": "js-scripts",
+	"main": "main.js",
+	"type": "module"
 }

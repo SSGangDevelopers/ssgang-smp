@@ -19,7 +19,7 @@ public class DiscordUtils {
 		plugin.getServer().getScheduler().runTaskTimer(
 						plugin,
 						() -> guild.set(plugin.getJda().getGuildById(guild.get().getId())),
-						60*20, // Run per minute
+						60 * 20, // Run per minute
 						60
 		);
 	}

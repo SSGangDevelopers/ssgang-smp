@@ -11,7 +11,7 @@ public class StringUtils {
 	/**
 	 * Replaces the placeholder in string with their respective provided values.
 	 *
-	 * @param s the input string.
+	 * @param s       the input string.
 	 * @param keypair the keypair, organized like this: {@code {"key1", "val1"}, {"key2", "val2"}, ...}
 	 * @return the string with all placeholders replaced to its respective values.
 	 */

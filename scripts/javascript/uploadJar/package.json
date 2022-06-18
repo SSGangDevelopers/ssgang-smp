@@ -1,13 +1,13 @@
 {
-  "name": "uploadjar",
-  "version": "1.0.0",
-  "main": "main.js",
-  "type": "module",
-  "dependencies": {
-    "js-scripts": "file:..",
-    "ssh2-sftp-client": ">=8.1.0"
-  },
-  "scripts": {
-    "start": "node ."
-  }
+	"name": "uploadjar",
+	"version": "1.0.0",
+	"main": "main.js",
+	"type": "module",
+	"dependencies": {
+		"js-scripts": "file:..",
+		"ssh2-sftp-client": ">=8.1.0"
+	},
+	"scripts": {
+		"start": "node ."
+	}
 }

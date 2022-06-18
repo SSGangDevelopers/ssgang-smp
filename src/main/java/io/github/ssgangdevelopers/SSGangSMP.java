@@ -109,12 +109,11 @@ public class SSGangSMP extends JavaPlugin {
 			embedBuilder.setColor(ColorUtils.DISCORD.GREEN);
 			embedBuilder.setTitle(LangUtils.get("bot.server.start"));
 			chatChannel.sendMessageEmbeds(embedBuilder.build()).queue();
-			getSLF4JLogger().info(
-							LangUtils.get(
-											"bot.start.done",
-											new String[]{"name", jda.getSelfUser().getName()},
-											new String[]{"id", "#" + jda.getSelfUser().getId()}
-							));
+			getSLF4JLogger().info(LangUtils.get(
+							"bot.start.done",
+							new String[]{"name", jda.getSelfUser().getName()},
+							new String[]{"id", "#" + jda.getSelfUser().getId()}
+			));
 		});
 	}
 
@@ -127,10 +126,6 @@ public class SSGangSMP extends JavaPlugin {
 			this.saveResource("messages/messages-en.yml", true);
 			this.saveResource("messages/messages-vi.yml", true);
 			this.saveResource("messages/messages-vicc.yml", true);
-		} else {
-			this.saveResource("messages/messages-en.yml", false);
-			this.saveResource("messages/messages-vi.yml", false);
-			this.saveResource("messages/messages-vicc.yml", false);
 		}
 	}
 
