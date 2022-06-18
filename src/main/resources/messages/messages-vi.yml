@@ -7,8 +7,12 @@ plugin:
 
 bot:
   start:
-    loginError: Đã xảy ra lỗi khi đăng nhập vào Discord.
-    done: Bot đã đăng nhập vào Discord thành công ({name} {id})
+    error:
+      login: Đã xảy ra lỗi khi đăng nhập vào Discord.
+      token: Token của bot chưa được cài đặt trong config.yml, TẤT CẢ CÁC TÍNH NĂNG CỦA DISCORD SẼ BỊ VÔ HIỆU HÓA!
+      channelNotFound: Không thể tìm thấy kênh với id {id}!
+      channelCantTalkIn: Bot không có quyền để nói bên trong {name}({id})
+    done: Bot đã đăng nhập vào Discord thành công ({name}{id})
   server:
     start: Server đang online!
     stop: Server đang offline!

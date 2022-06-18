@@ -7,8 +7,12 @@ plugin:
 
 bot:
   start:
-    loginError: Dã xảy za lỗi xi dăq n'ập vào Ziskozz.
-    done: Bot dã dăq n'ập vào Ziskozz wàn' kôq ({name} {id})
+    error:
+      login: Dã xảy za lỗi xi dăq n'ập vào Ziskozz.
+      token: Token kủa bot cưa dượk kài dặt coq config.yml, TẤT KẢ KÁK TÍN' NĂQ KỦA ZISKOZZ SẼ BỊ VÔ HIỆU HÓA!
+      channelNotFound: Không thể tìm thấy kênh với id {id}!
+      channelCantTalkIn: Bot không có quyền để nói bên trong {name}({id})
+    done: Bot dã dăq n'ập vào Ziskozz wàn' kôq ({name}{id})
   server:
     start: Sezvez daq online!
     stop: Sezvez daq offline!

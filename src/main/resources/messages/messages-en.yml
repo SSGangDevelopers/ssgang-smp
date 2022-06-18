@@ -7,8 +7,12 @@ plugin:
 
 bot:
   start:
-    loginError: Error occurred while logging into the Discord bot.
-    done: Bot logged into Discord successfully ({name} {id})
+    error:
+      login: Error occurred while logging into the Discord bot.
+      token: Bot token is not set in config.yml, ALL DISCORD INTEGRATION WILL BE DISABLED!
+      channelNotFound: Channel with id {id} can not be found!
+      channelCantTalkIn: Bot don't have permission to talk in {name}({id})
+    done: Bot logged into Discord successfully ({name}{id})
   server:
     start: Server is now online!
     stop: Server is now offline!

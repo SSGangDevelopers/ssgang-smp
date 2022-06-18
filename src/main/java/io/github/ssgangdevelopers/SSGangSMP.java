@@ -14,6 +14,7 @@ import net.dv8tion.jda.api.utils.ChunkingFilter;
 import net.dv8tion.jda.api.utils.cache.CacheFlag;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 
 import javax.security.auth.login.LoginException;
@@ -30,7 +31,7 @@ public class SSGangSMP extends JavaPlugin {
 	@Override
 	public void onEnable() {
 		long startTime = System.currentTimeMillis();
-		Logger logger = getSLF4JLogger(); // Prefer using SLF4J
+		Logger logger = getSLF4JLogger();
 
 		logger.info("Starting plugin initialization...");
 
@@ -64,10 +65,12 @@ public class SSGangSMP extends JavaPlugin {
 
 	@Override
 	public void onDisable() {
-		EmbedBuilder embedBuilder = new EmbedBuilder();
-		embedBuilder.setColor(ColorUtils.DISCORD.RED);
-		embedBuilder.setTitle(LangUtils.get("bot.server.stop"));
-		chatChannel.sendMessageEmbeds(embedBuilder.build()).queue();
+		if (chatChannel != null && chatChannel.canTalk()) {
+			EmbedBuilder embedBuilder = new EmbedBuilder();
+			embedBuilder.setColor(ColorUtils.DISCORD.RED);
+			embedBuilder.setTitle(LangUtils.get("bot.server.stop"));
+			chatChannel.sendMessageEmbeds(embedBuilder.build()).queue();
+		}
 		jda.shutdown();
 	}
 
@@ -75,12 +78,15 @@ public class SSGangSMP extends JavaPlugin {
 	 * Initialize Discord bot.
 	 */
 	public void initDiscord() {
+		Logger logger = getSLF4JLogger();
 		String botToken = getConfig().getString("botToken");
+
 		if (botToken == null || botToken.length() == 0) {
-			getSLF4JLogger().error("Bot token is not set in config.yml, ALL DISCORD INTEGRATION WILL BE DISABLED!");
+			logger.error(LangUtils.get("bot.start.error.token"));
 			return;
 		}
-		getServer().getScheduler().runTask(this, () -> {
+
+		getServer().getScheduler().runTaskAsynchronously(this, () -> {
 			String chatChannelId = getConfig().getString("chatChannelId");
 			assert chatChannelId != null;
 
@@ -95,21 +101,37 @@ public class SSGangSMP extends JavaPlugin {
 								.build()
 								.awaitReady();
 			} catch (LoginException e) {
-				getSLF4JLogger().error(LangUtils.get("bot.start.loginError"), e);
+				logger.error(LangUtils.get("bot.start.error.login"), e);
 				selfDestruct();
 			} catch (InterruptedException e) {
-				getSLF4JLogger().warn(LangUtils.get("plugin.error.threadInterrupted"));
+				logger.warn(LangUtils.get("plugin.error.threadInterrupted"));
 			}
 			if (!this.isEnabled()) return; // Bot login failed
 			chatChannel = jda.getTextChannelById(chatChannelId);
-			ChatBridging.registerListeners();
 
-			// Discord bot init complete
-			EmbedBuilder embedBuilder = new EmbedBuilder();
-			embedBuilder.setColor(ColorUtils.DISCORD.GREEN);
-			embedBuilder.setTitle(LangUtils.get("bot.server.start"));
-			chatChannel.sendMessageEmbeds(embedBuilder.build()).queue();
-			getSLF4JLogger().info(LangUtils.get(
+			if (chatChannel == null) {
+				logger.warn(LangUtils.get(
+								"bot.start.error.channelNotFound",
+								new String[]{"id", chatChannelId}
+				));
+			} else {
+				if (!chatChannel.canTalk()) {
+					logger.warn(LangUtils.get(
+									"bot.start.error.channelCantTalkIn",
+									new String[]{"name", "#" + chatChannel.getName()},
+									new String[]{"id", chatChannelId}
+					));
+				} else {
+					ChatBridging.registerListeners();
+
+					EmbedBuilder embedBuilder = new EmbedBuilder();
+					embedBuilder.setColor(ColorUtils.DISCORD.GREEN);
+					embedBuilder.setTitle(LangUtils.get("bot.server.start"));
+					chatChannel.sendMessageEmbeds(embedBuilder.build()).queue();
+				}
+			}
+
+			logger.info(LangUtils.get(
 							"bot.start.done",
 							new String[]{"name", jda.getSelfUser().getName()},
 							new String[]{"id", "#" + jda.getSelfUser().getId()}
@@ -129,7 +151,7 @@ public class SSGangSMP extends JavaPlugin {
 		}
 	}
 
-
+	@NotNull
 	public static SSGangSMP getInstance() {
 		return getPlugin(SSGangSMP.class);
 	}
