@@ -45,7 +45,7 @@ public class SSGangSMP extends JavaPlugin {
 		logger.info("Loading locales...");
 		initLocaleFiles();
 		File messagesFolder = new File(getDataFolder(), "messages");
-		LangUtils.load(new File(messagesFolder, "messages-" + getConfig().getString("language") + ".yml"));
+		LangUtils.init(new File(messagesFolder, "messages-" + getConfig().getString("language") + ".yml"));
 
 		if (!this.isEnabled()) return; // Stop onEnable() if locale file fails to load
 
@@ -77,7 +77,7 @@ public class SSGangSMP extends JavaPlugin {
 	/**
 	 * Initialize Discord bot.
 	 */
-	public void initDiscord() {
+	private void initDiscord() {
 		Logger logger = getSLF4JLogger();
 		String botToken = getConfig().getString("botToken");
 
@@ -142,7 +142,7 @@ public class SSGangSMP extends JavaPlugin {
 	/**
 	 * Ensures the languages files are present.
 	 */
-	public void initLocaleFiles() {
+	private void initLocaleFiles() {
 		File messagesFolder = new File(getDataFolder(), "messages");
 		if (messagesFolder.mkdir()) {
 			this.saveResource("messages/messages-en.yml", true);

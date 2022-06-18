@@ -22,7 +22,7 @@ public class LangUtils {
 	 *
 	 * @param file Language file to load.
 	 */
-	public static void load(@NotNull File file) {
+	public static void init(@NotNull File file) {
 		SSGangSMP.getInstance().getSLF4JLogger().info("Loading language properties from {}", file.getName());
 		checkAndLoad(file);
 	}
@@ -71,7 +71,7 @@ public class LangUtils {
 	 * @return the string got from the language file with replaced placeholder.
 	 */
 	@NotNull
-	public static String get(@NotNull String identifier, String[]... keypair) {
+	public static String get(@NotNull String identifier, @NotNull String[]... keypair) {
 		String original = get(identifier);
 		return StringUtils.replacePlaceholders(original, keypair);
 	}

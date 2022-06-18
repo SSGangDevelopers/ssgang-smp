@@ -15,7 +15,6 @@ public class ColorUtils {
 
 	public static final class DISCORD {
 		public static final Color GREEN = new Color(87, 242, 137);
-		public static final Color YELLOW = new Color(254, 230, 92);
 		public static final Color RED = new Color(237, 66, 69);
 	}
 }

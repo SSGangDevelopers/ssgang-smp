@@ -24,7 +24,7 @@ public class DiscordUtils {
 		);
 	}
 
-	private static void checkAndUpdateGuild() {
+	private static void check() {
 		if (guild.get() == null) {
 			init();
 		}
@@ -38,7 +38,7 @@ public class DiscordUtils {
 	 */
 	@Nullable
 	public static String getIdFromUsername(String username) {
-		checkAndUpdateGuild();
+		check();
 		List<Member> userList = guild.get().getMembers();
 		for (Member member : userList) {
 			if ((member.getNickname() != null && member.getNickname().equals(username)) || member.getUser().getName().equals(username))
@@ -55,7 +55,7 @@ public class DiscordUtils {
 	 */
 	@Nullable
 	public static String getIdFromChannelName(String name) {
-		checkAndUpdateGuild();
+		check();
 		List<GuildChannel> channels = guild.get().getChannels();
 		for (GuildChannel channel : channels) {
 			if (channel.getName().equals(name))

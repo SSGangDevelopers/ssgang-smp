@@ -2,6 +2,7 @@ package io.github.ssgangdevelopers.utils;
 
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.serializer.plain.PlainTextComponentSerializer;
+import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -11,19 +12,20 @@ public class StringUtils {
 	/**
 	 * Replaces the placeholder in string with their respective provided values.
 	 *
-	 * @param s       the input string.
+	 * @param input   the input string.
 	 * @param keypair the keypair, organized like this: {@code {"key1", "val1"}, {"key2", "val2"}, ...}
 	 * @return the string with all placeholders replaced to its respective values.
 	 */
+	@Contract(pure = true)
 	@NotNull
-	public static String replacePlaceholders(@NotNull String s, @NotNull String[]... keypair) {
+	public static String replacePlaceholders(@NotNull String input, @NotNull String[]... keypair) {
 		for (String[] kp : keypair) {
 			if (kp.length < 2) {
 				continue;
 			}
-			s = s.replace(String.format("{%s}", kp[0]), kp[1]);
+			input = input.replace("{" + kp[0] + "}", kp[1]);
 		}
-		return s;
+		return input;
 	}
 
 	/**
@@ -33,7 +35,7 @@ public class StringUtils {
 	 * @return The text extracted from provided component.
 	 */
 	@NotNull
-	public static String serializeComponent(Component component) {
+	public static String serializeComponent(@NotNull Component component) {
 		String output;
 
 		// May add some login in the future

@@ -8,18 +8,16 @@ version = "1.0.0_dev" // Semantic versioning: https://semver.org/
 
 repositories {
 	mavenCentral()
-	maven {
-		name = "PaperMC"
+	maven(
 		url = uri("https://papermc.io/repo/repository/maven-public/")
-	}
-	maven {
-		name = "JDA"
+	)
+	maven(
 		url = uri("https://m2.dv8tion.net/releases/")
-	}
+	)
 }
 
 dependencies {
-	compileOnly("io.papermc.paper:paper-api:1.18.2-R0.1-SNAPSHOT") // API used for development
+	compileOnly("io.papermc.paper:paper-api:1.19-R0.1-SNAPSHOT") // API used for development
 	compileOnly("org.apache.logging.log4j:log4j-core:2.17.2") // For logs filter
 	compileOnly("org.projectlombok:lombok:1.18.24") // For code shorten
 	annotationProcessor("org.projectlombok:lombok:1.18.24")
@@ -30,11 +28,6 @@ dependencies {
 		exclude("org.slf4j", "slf4j-api") // PaperMC already included it
 		exclude("com.google.code.findbugs", "jsr305") // PaperMC already included it
 	}
-
-//	testImplementation("org.junit.jupiter:junit-jupiter-api:5.8.2")
-//	testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.8.2")
-//	testCompileOnly("org.projectlombok:lombok:1.18.24")
-//	testAnnotationProcessor("org.projectlombok:lombok:1.18.24")
 }
 
 java {
@@ -57,8 +50,4 @@ tasks {
 	shadowJar {
 		archiveFileName.set(rootProject.name + "-" + rootProject.version + ".jar")
 	}
-
-//	getByName<Test>("test") {
-//		useJUnitPlatform()
-//	}
 }
