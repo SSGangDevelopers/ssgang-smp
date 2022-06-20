@@ -6,13 +6,13 @@ import io.github.ssgangdevelopers.utils.DiscordUtils;
 import io.github.ssgangdevelopers.utils.LangUtils;
 import io.github.ssgangdevelopers.utils.StringUtils;
 import io.papermc.paper.event.player.AsyncChatEvent;
-import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.entities.MessageType;
 import net.dv8tion.jda.api.entities.TextChannel;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import net.kyori.adventure.text.Component;
+import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
@@ -24,24 +24,18 @@ public class ChatBridging extends ListenerAdapter implements Listener {
 
 	public static void registerListeners() {
 		SSGangSMP plugin = SSGangSMP.getInstance();
-		new ChatBridging(
-						SSGangSMP.getInstance(),
-						plugin.getJda(),
-						plugin.getChatChannel()
-		);
+		ChatBridging instance = new ChatBridging(plugin.getChatChannel());
+		plugin.getServer().getPluginManager().registerEvents(instance, plugin);
+		plugin.getJda().addEventListener(instance);
 	}
 
 	private final TextChannel channel;
-	private final SSGangSMP plugin;
 
-	private ChatBridging(SSGangSMP plugin, JDA jda, TextChannel chatChannel) {
+	private ChatBridging(TextChannel chatChannel) {
 		this.channel = chatChannel;
-		this.plugin = plugin;
-		plugin.getServer().getPluginManager().registerEvents(this, plugin);
-		jda.addEventListener(this);
+
 	}
 
-	/* From Discord to Minecraft - Start */
 
 	@Override
 	public void onGuildMessageReceived(@NotNull GuildMessageReceivedEvent e) {
@@ -57,7 +51,7 @@ public class ChatBridging extends ListenerAdapter implements Listener {
 			sender = e.getAuthor().getName();
 		}
 
-		plugin.getServer().broadcast(
+		Bukkit.getServer().broadcast(
 						Component.empty()
 										.append(MINECRAFT_PREFIX)
 										.append(Component.space())
@@ -77,9 +71,6 @@ public class ChatBridging extends ListenerAdapter implements Listener {
 		return false;
 	}
 
-	/* From Discord to Minecraft - End */
-
-	/* From Minecraft to Discord - Start */
 
 	@EventHandler(priority = EventPriority.MONITOR)
 	public void onNewChat(AsyncChatEvent e) {
@@ -115,6 +106,4 @@ public class ChatBridging extends ListenerAdapter implements Listener {
 		}
 		return output;
 	}
-
-	/* From Minecraft to Discord - End */
 }

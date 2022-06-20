@@ -14,7 +14,7 @@ import java.util.HashMap;
  * Represents a LangUtils to get localized display messages.
  */
 public class LangUtils {
-	private static final String DEFAULT_FILE_NAME = "messages/messages-en.yml";
+	private static final String DEFAULT_FILE_NAME = "lang/lang-en.yml";
 	private static final HashMap<String, Object> data = new HashMap<>();
 
 	/**
@@ -59,12 +59,23 @@ public class LangUtils {
 			output = ((HashMap<String, Object>) output).get(section);
 		}
 
-		return output != null ? (String) output : identifier;
-		// Return identifier in case null for easier error tracking
+		if (output == null) {
+			return identifier;
+		} else {
+			if (output instanceof String) {
+				return (String) output;
+			} else {
+				if (output instanceof HashMap) {
+					return (String) ((HashMap<String, Object>) output).get("default");
+				} else {
+					return identifier;
+				}
+			}
+		}
 	}
 
 	/**
-	 * Gets the localized string with its identifier.
+	 * Gets the localized string with its identifier and replace with provided keypair
 	 *
 	 * @param identifier the string's identifier.
 	 * @param keypair    the keypair, organized like this: {@code {"key1", "val1"}, {"key2", "val2"}, ...}
@@ -75,5 +86,4 @@ public class LangUtils {
 		String original = get(identifier);
 		return StringUtils.replacePlaceholders(original, keypair);
 	}
-
 }

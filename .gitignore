@@ -38,6 +38,5 @@ bin/
 ### Mac OS ###
 .DS_Store
 
-### NodeJS dependencies ###
-scripts/**/node_modules
-scripts/javascript/**/package-lock.json
+### Tasks data ###
+tasks/**/

@@ -1,6 +1,7 @@
 package io.github.ssgangdevelopers;
 
 import io.github.ssgangdevelopers.listeners.ChatBridging;
+import io.github.ssgangdevelopers.listeners.EventsBridging;
 import io.github.ssgangdevelopers.logs.JDALogFormatter;
 import io.github.ssgangdevelopers.utils.ColorUtils;
 import io.github.ssgangdevelopers.utils.LangUtils;
@@ -42,10 +43,10 @@ public class SSGangSMP extends JavaPlugin {
 		// Load config - End
 
 		// Load locale - Start
-		logger.info("Loading locales...");
+		logger.info("Loading language file...");
 		initLocaleFiles();
-		File messagesFolder = new File(getDataFolder(), "messages");
-		LangUtils.init(new File(messagesFolder, "messages-" + getConfig().getString("language") + ".yml"));
+		File messagesFolder = new File(getDataFolder(), "lang");
+		LangUtils.init(new File(messagesFolder, "lang-" + getConfig().getString("language") + ".yml"));
 
 		if (!this.isEnabled()) return; // Stop onEnable() if locale file fails to load
 
@@ -123,6 +124,7 @@ public class SSGangSMP extends JavaPlugin {
 					));
 				} else {
 					ChatBridging.registerListeners();
+					EventsBridging.registerListeners();
 
 					EmbedBuilder embedBuilder = new EmbedBuilder();
 					embedBuilder.setColor(ColorUtils.DISCORD.GREEN);
@@ -143,11 +145,11 @@ public class SSGangSMP extends JavaPlugin {
 	 * Ensures the languages files are present.
 	 */
 	private void initLocaleFiles() {
-		File messagesFolder = new File(getDataFolder(), "messages");
+		File messagesFolder = new File(getDataFolder(), "lang");
 		if (messagesFolder.mkdir()) {
-			this.saveResource("messages/messages-en.yml", true);
-			this.saveResource("messages/messages-vi.yml", true);
-			this.saveResource("messages/messages-vicc.yml", true);
+			this.saveResource("lang/lang-en.yml", true);
+			this.saveResource("lang/lang-vi.yml", true);
+			this.saveResource("lang/lang-vicc.yml", true);
 		}
 	}
 

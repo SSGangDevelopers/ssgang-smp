@@ -1,9 +1,14 @@
 package io.github.ssgangdevelopers.utils;
 
 import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.TextComponent;
+import net.kyori.adventure.text.TranslatableComponent;
 import net.kyori.adventure.text.serializer.plain.PlainTextComponentSerializer;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Some methods for easier string processing
@@ -38,8 +43,18 @@ public class StringUtils {
 	public static String serializeComponent(@NotNull Component component) {
 		String output;
 
-		// May add some login in the future
-		output = PlainTextComponentSerializer.plainText().serialize(component);
+		if (component instanceof TextComponent) {
+			output = PlainTextComponentSerializer.plainText().serialize(component);
+		} else {
+			if (component instanceof TranslatableComponent transComp) {
+				String rawValue = LangUtils.get(transComp.key());
+				List<String> args = new ArrayList<>(3);
+				transComp.args().forEach((comp) -> args.add(serializeComponent(comp)));
+				output = String.format(rawValue, args.toArray());
+			} else {
+				output = PlainTextComponentSerializer.plainText().serialize(component);
+			}
+		}
 
 		return output;
 	}

@@ -1,0 +1,10 @@
+{
+	"name": "langfileconverter",
+	"version": "1.0.0",
+	"main": "main.js",
+	"type": "module",
+	"dependencies": {
+		"js-scripts": "file:..",
+		"yaml": "^2.1.1"
+	}
+}

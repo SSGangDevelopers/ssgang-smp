@@ -107,8 +107,7 @@ public class JDALogFormatter implements Filter {
 		return mainHandle(
 						event.getLoggerName(),
 						event.getLevel(),
-						event.getMessage()
-										.getFormattedMessage(),
+						event.getMessage().getFormattedMessage(),
 						event.getThrown());
 	}
 

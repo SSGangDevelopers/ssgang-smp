@@ -1,11 +1,12 @@
 import Client from 'ssh2-sftp-client';
 import path from 'path';
 import fs from 'fs';
-import url from 'url';
 
-export default function run(args) {
+export default function run(options) {
 
-	let dirName = url.fileURLToPath(new URL('.', import.meta.url));
+	let args = options.args;
+	let projectRootDir = options.rootDir;
+
 	let sftp = new Client();
 
 	sftp
@@ -33,7 +34,7 @@ export default function run(args) {
 
 			console.log(`Deleted ${files.length} old file(s)`);
 
-			let projectRootDir = path.dirname(path.dirname(path.dirname(dirName)));
+			
 			let libs = path.join(path.join(projectRootDir, 'build'), 'libs');
 			let jarFile = fs
 				.readdirSync(libs)
