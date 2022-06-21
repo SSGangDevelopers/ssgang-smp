@@ -33,7 +33,6 @@ public class ChatBridging extends ListenerAdapter implements Listener {
 
 	private ChatBridging(TextChannel chatChannel) {
 		this.channel = chatChannel;
-
 	}
 
 
@@ -63,7 +62,7 @@ public class ChatBridging extends ListenerAdapter implements Listener {
 		);
 	}
 
-	private boolean checkMsgFromDiscord(Message msg) {
+	private boolean checkMsgFromDiscord(@NotNull Message msg) {
 		if (msg.getTextChannel() != this.channel) return true;
 		if (!List.of(MessageType.DEFAULT, MessageType.INLINE_REPLY).contains(msg.getType())) return true;
 		if (msg.getAuthor().isBot() || msg.isWebhookMessage()) return true;
@@ -73,7 +72,7 @@ public class ChatBridging extends ListenerAdapter implements Listener {
 
 
 	@EventHandler(priority = EventPriority.MONITOR)
-	public void onNewChat(AsyncChatEvent e) {
+	public void onNewChat(@NotNull AsyncChatEvent e) {
 		final String DISCORD_ARROW = "**" + LangUtils.get("gateway.arrow") + "**";
 
 		String msg = processMsg(StringUtils.serializeComponent(e.message()));
@@ -88,7 +87,6 @@ public class ChatBridging extends ListenerAdapter implements Listener {
 		List<String> separatedText = List.of(output.split(" "));
 
 		for (String i : separatedText) {
-			// Converting normal ping text into real pings.
 			if (i.startsWith("@")) {
 				String userID = DiscordUtils.getIdFromUsername(i.substring(1));
 				if (userID != null) {
@@ -96,7 +94,6 @@ public class ChatBridging extends ListenerAdapter implements Listener {
 				}
 			}
 
-			// Converting normal channel 'ping' to real 'ping'.
 			if (i.startsWith("#")) {
 				String channelID = DiscordUtils.getIdFromChannelName(i.substring(1));
 				if (channelID != null) {

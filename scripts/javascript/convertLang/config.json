@@ -1,0 +1,13 @@
+{
+	"reqPaths": [
+		"advancements",
+		"entity",
+		"multiplayer.player",
+		"death",
+		"chat.type.advancement",
+		"chat.square_brackets"
+	],
+	"blacklistedPaths": [
+		"description"
+	]
+}

@@ -8,9 +8,13 @@ import net.dv8tion.jda.api.entities.TextChannel;
 import net.kyori.adventure.text.Component;
 import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.PlayerDeathEvent;
+import org.bukkit.event.player.PlayerAdvancementDoneEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
+import org.jetbrains.annotations.NotNull;
 
 public class EventsBridging implements Listener {
 
@@ -28,23 +32,43 @@ public class EventsBridging implements Listener {
 		this.channel = channel;
 	}
 
-	@EventHandler
-	public void onPlayerJoin(PlayerJoinEvent e) {
-		Component joinMsgComponent = e.joinMessage();
-		if (joinMsgComponent == null) return;
+	@EventHandler(priority = EventPriority.MONITOR)
+	public void onPlayerJoin(@NotNull PlayerJoinEvent e) {
+		Component message = e.joinMessage();
+		if (message == null) return;
 		EmbedBuilder builder = new EmbedBuilder()
-						.setTitle(StringUtils.serializeComponent(joinMsgComponent))
+						.setTitle(StringUtils.serializeComponent(message))
 						.setColor(ColorUtils.DISCORD.GREEN);
 		channel.sendMessageEmbeds(builder.build()).queue();
 	}
 
-	@EventHandler
-	public void onPlayerQuit(PlayerQuitEvent e) {
-		Component quitMsgComponent = e.quitMessage();
-		if (quitMsgComponent == null) return;
+	@EventHandler(priority = EventPriority.MONITOR)
+	public void onPlayerQuit(@NotNull PlayerQuitEvent e) {
+		Component message = e.quitMessage();
+		if (message == null) return;
 		EmbedBuilder builder = new EmbedBuilder()
-						.setTitle(StringUtils.serializeComponent(quitMsgComponent))
+						.setTitle(StringUtils.serializeComponent(message))
 						.setColor(ColorUtils.DISCORD.RED);
+		channel.sendMessageEmbeds(builder.build()).queue();
+	}
+
+	@EventHandler(priority = EventPriority.MONITOR)
+	public void onAdvancementDone(@NotNull PlayerAdvancementDoneEvent e) {
+		Component message = e.message();
+		if (message == null) return;
+		EmbedBuilder builder = new EmbedBuilder()
+						.setTitle(StringUtils.serializeComponent(message))
+						.setColor(ColorUtils.DISCORD.GREEN);
+		channel.sendMessageEmbeds(builder.build()).queue();
+	}
+
+	@EventHandler(priority = EventPriority.MONITOR)
+	public void onPlayerDeath(@NotNull PlayerDeathEvent e) {
+		Component message = e.deathMessage();
+		if (message == null) return;
+		EmbedBuilder builder = new EmbedBuilder()
+						.setTitle(StringUtils.serializeComponent(message))
+						.setColor(ColorUtils.DISCORD.BLACK);
 		channel.sendMessageEmbeds(builder.build()).queue();
 	}
 }

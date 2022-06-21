@@ -2,7 +2,6 @@ package io.github.ssgangdevelopers;
 
 import io.github.ssgangdevelopers.listeners.ChatBridging;
 import io.github.ssgangdevelopers.listeners.EventsBridging;
-import io.github.ssgangdevelopers.logs.JDALogFormatter;
 import io.github.ssgangdevelopers.utils.ColorUtils;
 import io.github.ssgangdevelopers.utils.LangUtils;
 import lombok.Getter;
@@ -44,11 +43,17 @@ public class SSGangSMP extends JavaPlugin {
 
 		// Load locale - Start
 		logger.info("Loading language file...");
-		initLocaleFiles();
-		File messagesFolder = new File(getDataFolder(), "lang");
-		LangUtils.init(new File(messagesFolder, "lang-" + getConfig().getString("language") + ".yml"));
-
-		if (!this.isEnabled()) return; // Stop onEnable() if locale file fails to load
+		initLanguageFiles();
+		String language = getConfig().getString("language");
+		if (language == null || language.length() == 0) {
+			logger.warn("'language' property is not specified, using default language file");
+			language = "en";
+		}
+		File messagesFolder = new File(new File(getDataFolder(), "lang"), language);
+		LangUtils.init(new File(messagesFolder, "plugin-lang.yml"));
+		if (!this.isEnabled()) return;
+		LangUtils.init(new File(messagesFolder, "minecraft-lang.yml"));
+		if (!this.isEnabled()) return;
 
 		logger.info(LangUtils.get("plugin.start.localeComplete"));
 		// Load locale - End
@@ -72,7 +77,7 @@ public class SSGangSMP extends JavaPlugin {
 			embedBuilder.setTitle(LangUtils.get("bot.server.stop"));
 			chatChannel.sendMessageEmbeds(embedBuilder.build()).queue();
 		}
-		jda.shutdown();
+		if (jda != null) jda.shutdown();
 	}
 
 	/**
@@ -91,7 +96,6 @@ public class SSGangSMP extends JavaPlugin {
 			String chatChannelId = getConfig().getString("chatChannelId");
 			assert chatChannelId != null;
 
-			JDALogFormatter.register();
 			try {
 				jda = JDABuilder
 								.create(GatewayIntent.GUILD_MESSAGES)
@@ -144,12 +148,20 @@ public class SSGangSMP extends JavaPlugin {
 	/**
 	 * Ensures the languages files are present.
 	 */
-	private void initLocaleFiles() {
-		File messagesFolder = new File(getDataFolder(), "lang");
-		if (messagesFolder.mkdir()) {
-			this.saveResource("lang/lang-en.yml", true);
-			this.saveResource("lang/lang-vi.yml", true);
-			this.saveResource("lang/lang-vicc.yml", true);
+	private void initLanguageFiles() {
+		File langDir = new File(getDataFolder(), "lang");
+		if (langDir.mkdir()) {
+			File en_lang_dir = new File(langDir, "en");
+			if (en_lang_dir.mkdir()) {
+				this.saveResource("lang/en/plugin-lang.yml", true);
+				this.saveResource("lang/en/minecraft-lang.yml", true);
+			}
+
+			File vi_lang_dir = new File(langDir, "vi");
+			if (vi_lang_dir.mkdir()) {
+				this.saveResource("lang/vi/plugin-lang.yml", true);
+				this.saveResource("lang/vi/minecraft-lang.yml", true);
+			}
 		}
 	}
 

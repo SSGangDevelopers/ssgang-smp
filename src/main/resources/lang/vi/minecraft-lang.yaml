@@ -1,0 +1,559 @@
+advancements:
+  adventure:
+    adventuring_time:
+      title: Giờ phiêu lưu
+    arbalistic:
+      title: Tay nỏ cừ khôi
+    avoid_vibration:
+      title: Lén lút 100
+    bullseye:
+      title: Trúng ngay hồng tâm!
+    fall_from_world_height:
+      title: Hang động & Vách đá
+    hero_of_the_village:
+      title: Người hùng của Ngôi làng
+    honey_block_slide:
+      title: Tình huống nhớp nháp
+    kill_a_mob:
+      title: Thợ săn quái vật
+    kill_all_mobs:
+      title: Quái vật bị săn đuổi
+    kill_mob_near_sculk_catalyst:
+      title: Nó lan ra
+    lightning_rod_with_villager_no_fire:
+      title: Người chống sốc điện
+    ol_betsy:
+      title: Ol' Betsy
+    play_jukebox_in_meadows:
+      title: Giai điệu hạnh phúc
+    root:
+      title: Phiêu lưu
+    shoot_arrow:
+      title: Nhắm mục tiêu
+    sleep_in_bed:
+      title: Giấc ngủ ngon
+    sniper_duel:
+      title: Xạ thủ tay đôi
+    spyglass_at_dragon:
+      title: Đó là máy bay phải không?
+    spyglass_at_ghast:
+      title: Đó là bóng bay à?
+    spyglass_at_parrot:
+      title: Đó là một con chim phải không?
+    summon_iron_golem:
+      title: Thuê người giúp đỡ
+    throw_trident:
+      title: Một trò đùa vô hại
+    totem_of_undying:
+      title: Sau khi chết
+    trade:
+      title: Một giao dịch quá đã!
+    trade_at_world_height:
+      title: Thương nhân Ngôi sao
+    two_birds_one_arrow:
+      title: Một mũi tên trúng hai đích
+    very_very_frightening:
+      title: Rất rất kinh khủng
+    voluntary_exile:
+      title: Tình nguyện bị lưu đày
+    walk_on_powder_snow_with_leather_boots:
+      title: Nhẹ như lông hồng
+    whos_the_pillager_now:
+      title: Giờ ai mới là Kẻ cướp đây?
+  empty: Hình như không có gì ở đây...
+  end:
+    dragon_breath:
+      title: Bạn cần một cây bạc hà
+    dragon_egg:
+      title: Thế hệ mới
+    elytra:
+      title: Giới hạn của bầu trời
+    enter_end_gateway:
+      title: Lối đi phía xa
+    find_end_city:
+      title: Thành phố ở cuối trò chơi
+    kill_dragon:
+      title: Giải thoát the End
+    levitate:
+      title: Từ trên đây nhìn xuống đẹp thật đấy
+    respawn_dragon:
+      title: Lại kết thúc nữa ư...
+    root:
+      title: The End
+  husbandry:
+    allay_deliver_cake_to_note_block:
+      title: Khúc hát mừng sinh nhật
+    allay_deliver_item_to_player:
+      title: Cậu có một người bạn là tôi đây
+    axolotl_in_a_bucket:
+      title: Thú săn mồi dễ thương nhất
+    balanced_diet:
+      title: Chế độ ăn uống cân bằng
+    breed_all_animals:
+      title: Đôi bên đôi
+    breed_an_animal:
+      title: Con vẹt và con dơi
+    complete_catalogue:
+      title: Một danh mục hoàn chỉnh
+    fishy_business:
+      title: Công việc đầy mùi cá
+    froglights:
+      title: Hợp nhất sức mạnh!
+    kill_axolotl_target:
+      title: Sức mạnh của tình bạn!
+    leash_all_frog_variants:
+      title: Khi một đội nhảy vào trong thị trấn
+    make_a_sign_glow:
+      title: Phát sáng và trông thấy!
+    netherite_hoe:
+      title: Sự cống hiến nghiêm túc
+    plant_seed:
+      title: Hạt giống vô biên
+    ride_a_boat_with_a_goat:
+      title: Bảy nổi ba chìm với chú dê!
+    root:
+      title: Nông nghiệp
+    safely_harvest_honey:
+      title: Cứ tự nhiên đi
+    silk_touch_nest:
+      title: Di dời tổ ong
+    tactical_fishing:
+      title: Chiến thuật câu cá
+    tadpole_in_a_bucket:
+      title: Bắt nó bắt nó
+    tame_an_animal:
+      title: Mãi là người bạn tốt
+    wax_off:
+      title: Cạo sáp ra
+    wax_on:
+      title: Bôi sáp vào
+  nether:
+    all_effects:
+      title: Làm cách nào mà ta đến được đây nhỉ?
+    all_potions:
+      title: Một ly Cocktail nguy hiểm
+    brew_potion:
+      title: Pha chế thuốc tại nhà
+    charge_respawn_anchor:
+      title: Ai sống dai hơn "Mèo chín kiếp"?!
+    create_beacon:
+      title: Mang một đèn hiệu về nhà
+    create_full_beacon:
+      title: Hải đăng
+    distract_piglin:
+      title: Ồ, sáng quá!
+    explore_nether:
+      title: Địa điểm du lịch nóng hổi
+    fast_travel:
+      title: Bong bóng không gian
+    find_bastion:
+      title: Những ngày xưa ấy
+    find_fortress:
+      title: Một pháo đài khủng khiếp
+    get_wither_skull:
+      title: Bộ xương rùng rợn đáng sợ
+    loot_bastion:
+      title: Heo chiến
+    netherite_armor:
+      title: Che chắn tôi bằng mảnh vỡ
+    obtain_ancient_debris:
+      title: Ẩn dưới vực thẳm
+    obtain_blaze_rod:
+      title: Chữa cháy
+    obtain_crying_obsidian:
+      title: Ai đang cắt hành vậy?
+    return_to_sender:
+      title: Trả lại cho người gửi
+    ride_strider:
+      title: Chiếc thuyền có chân
+    ride_strider_in_overworld_lava:
+      title: Cảm giác như ở nhà
+    root:
+      title: Nether
+    summon_wither:
+      title: Đồi Wither
+    uneasy_alliance:
+      title: Là đồng minh thật không dễ dàng
+    use_lodestone:
+      title: Ôi nam châm quê hương, hãy đưa tôi về nhà
+  sad_label: :(
+  story:
+    cure_zombie_villager:
+      title: Bác sĩ Thây ma
+    deflect_arrow:
+      title: Dễ gì mà bắn hạ được ta
+    enchant_item:
+      title: Người phù phép
+    enter_the_end:
+      title: Kết thúc ư?
+    enter_the_nether:
+      title: Chúng ta cần tiến sâu hơn
+    follow_ender_eye:
+      title: Mắt gián điệp
+    form_obsidian:
+      title: Thử thách nước đá
+    iron_tools:
+      title: Đó có phải là cúp sắt
+    lava_bucket:
+      title: Món đồ nóng bỏng
+    mine_diamond:
+      title: Kim cương!
+    mine_stone:
+      title: Thời kì đồ đá
+    obtain_armor:
+      title: Lên đồ
+    root:
+      title: Minecraft
+    shiny_gear:
+      title: Che chắn tôi bằng kim cương
+    smelt_iron:
+      title: Kiếm lấy phần cứng
+    upgrade_tools:
+      title: Nâng cấp
+  toast:
+    challenge: Hoàn thành thử thách!
+    goal: Đã đạt mục tiêu!
+    task: Đã làm tiến trình!
+chat:
+  square_brackets: "[%s]"
+  type:
+    advancement:
+      challenge: "%s đã hoàn thành thử thách %s"
+      goal: "%s đã đạt được mục tiêu %s"
+      task: "%s đã làm tiến trình %s"
+death:
+  attack:
+    anvil:
+      default: "%1$s đã bị đè bẹp bởi một cái đe rơi xuống"
+      player: "%1$s đã bị đè bẹp bởi một cái de rơi xuống khi đang đánh nhau với %2$s"
+    arrow:
+      default: "%1$s đã bị bắn bởi %2$s"
+      item: "%1$s đã bị bắn do %2$s dùng %3$s"
+    badRespawnPoint:
+      link: Lỗi thiết kế trò chơi
+      message: "%1$s đã bị giết bởi %2$s"
+    cactus:
+      default: "%1$s đã bị đâm chích đến chết"
+      player: "%1$s đã lao vào một cây xương rồng khi đang cố trốn khỏi %2$s"
+    cramming:
+      default: "%1$s đã bị bóp chẹt quá nhiều"
+      player: "%1$s đã bị đè bẹp bởi %2$s"
+    dragonBreath:
+      default: "%1$s đã bị nướng trong hơi thở của rồng"
+      player: "%1$s đã bị nướng trong hơi thở của rồng bởi %2$s"
+    drown:
+      default: "%1$s đã chết đuối"
+      player: "%1$s đã chết đuối khi đang cố trốn khỏi %2$s"
+    dryout:
+      default: "%1$s đã chết vì mất nước"
+      player: "%1$s đã chết vì mất nước khi đang cố trốn khỏi %2$s"
+    even_more_magic: "%1$s đã bị giết bởi nhiều ma thuật hơn nữa"
+    explosion:
+      default: "%1$s đã nổ tung"
+      player:
+        default: "%1$s đã bị %2$s làm nổ tung"
+        item: "%1$s đã bị %2$s dùng %3$s làm nổ tung"
+    fall:
+      default: "%1$s đã rơi xuống đất quá mạnh"
+      player: "%1$s đã rơi xuống đất quá mạnh khi đang cố trốn khỏi %2$s"
+    fallingBlock:
+      default: "%1$s đã bị đè nát bởi một khối đang rơi"
+      player: "%1$s đã bị đè nát bởi một khối đang rơi khi đang đánh nhau với %2$s"
+    fallingStalactite:
+      default: "%1$s đã bị đâm chết bởi một thạch nhũ đang rơi"
+      player: "%1$s đã bị đâm chết bởi một thạch nhũ đang rơi khi đang đánh nhau với
+        %2$s"
+    fireball:
+      default: "%1$s đã bị đánh bằng cầu lửa bởi %2$s"
+      item: "%1$s đã bị đánh bởi cầu lửa do %2$s dùng %3$s"
+    fireworks:
+      default: "%1$s đã biến mất với vụ nổ"
+      item: "%1$s đã biến mất với vụ nổ do pháo hoa bắn từ %3$s bởi %2$s"
+      player: "%1$s đã biến mất với vụ nổ khi đang đánh nhau với %2$s"
+    flyIntoWall:
+      default: "%1$s đã cảm nhận động năng"
+      player: "%1$s đã cảm nhận động năng khi đang cố trốn khỏi %2$s"
+    freeze:
+      default: "%1$s đã chết cóng"
+      player: "%1$s đã bị đóng băng đến chết bởi %2$s"
+    generic:
+      default: "%1$s đã chết"
+      player: "%1$s đã chết vì %2$s"
+    hotFloor:
+      default: "%1$s phát hiện ra dưới đất là dung nham"
+      player: "%2$s đã khiến %1$s bước vào vùng nguy hiểm"
+    inFire:
+      default: "%1$s đã bốc cháy"
+      player: "%1$s đã bước vảo lửa khi đang đánh nhau với %2$s"
+    inWall:
+      default: "%1$s đã chết ngạt trong một bức tường"
+      player: "%1$s đã chết ngạt trong một bức tường khi đang đánh nhau với %2$s"
+    indirectMagic:
+      default: "%1$s đã bị giết do %2$s dùng ma thuật"
+      item: "%1$s đã bị giết do %2$s dùng %3$s"
+    lava:
+      default: "%1$s đã cố bơi trong dung nham"
+      player: "%1$s đã cố bơi trong dung nham để trốn khỏi %2$s"
+    lightningBolt:
+      default: "%1$s đã bị sét đánh"
+      player: "%1$s đã bị sét đánh khi đang đánh nhau với %2$s"
+    magic:
+      default: "%1$s đã bị giết bởi ma thuật"
+      player: "%1$s đã bị giết bởi ma thuật khi đang cố trốn khỏi %2$s"
+    message_too_long: "Thực ra, thông báo này quá dài để hiển thị hết. Xin lỗi! Đây
+      là bản được làm ngắn lại: %s"
+    mob:
+      default: "%1$s đã bị giết bởi %2$s"
+      item: "%1$s đã bị giết do %2$s dùng %3$s"
+    onFire:
+      default: "%1$s đã bị thiêu chết"
+      item: "%1$s đã chết cháy khi đang đánh nhau với %2$s dùng %3$s"
+      player: "%1$s đã chết cháy khi đang đánh nhau với %2$s"
+    outOfWorld:
+      default: "%1$s đã rơi ra khỏi thế giới"
+      player: "%1$s không muốn đội trời chung với %2$s"
+    player:
+      default: "%1$s đã bị giết bởi %2$s"
+      item: "%1$s đã bị giết do %2$s dùng %3$s"
+    sonic_boom:
+      default: "%1$s bị quét sạch bởi một đợt sóng siêu thanh"
+      item: "%1$s bị quét sạch bởi một đợt sóng siêu thanh khi đang cố trốn khỏi %2$s
+        dùng %3$s"
+      player: "%1$s bị quét sạch bởi một đợt sóng siêu thanh khi đang cố trốn khỏi
+        %2$s"
+    stalagmite:
+      default: "%1$s đã bị đâm bởi một khối thạch nhũ"
+      player: "%1$s đã bị đâm vào một thạch nhũ khi đang đánh nhau với %2$s"
+    starve:
+      default: "%1$s đã chết đói"
+      player: "%1$s đã chết đói khi đang đánh nhau với %2$s"
+    sting:
+      default: "%1$s đã bị đốt đến chết"
+      item: "%1$s đã bị đốt đến chết bởi %2$s dùng %3$s"
+      player: "%1$s đã bị đốt đến chết bởi %2$s"
+    sweetBerryBush:
+      default: "%1$s đã bị đâm đến chết bởi một bụi cây mọng ngọt"
+      player: "%1$s đã bị đâm đến chết bởi một bụi cây mọng ngọt khi đang cố trốn khỏi
+        %2$s"
+    thorns:
+      default: "%1$s đã bị giết khi đang cố hại %2$s"
+      item: "%1$s đã bị giết bởi %3$s khi đang cố hại %2$s"
+    thrown:
+      default: "%1$s đã bị đánh đập bởi %2$s"
+      item: "%1$s đã bị đánh đập do %2$s dùng %3$s"
+    trident:
+      default: "%1$s đã bị đâm bởi %2$s"
+      item: "%1$s đã bị đâm bởi %2$s với %3$s"
+    wither:
+      default: "%1$s đã bị héo đi"
+      player: "%1$s đã bị héo đi khi đang đánh nhau với %2$s"
+    witherSkull:
+      default: "%1$s đã bị bắn bởi một đầu lâu từ %2$s"
+      item: "%1$s đã bị bắn bởi một đầu lâu từ %2$s dùng %3$s"
+  fell:
+    accident:
+      generic: "%1$s đã rơi xuống từ một nơi cao"
+      ladder: "%1$s đã rơi khỏi cái thang"
+      other_climbable: "%1$s đã bị ngã khi đang leo lên cao"
+      scaffolding: "%1$s đã rơi khỏi giàn giáo"
+      twisting_vines: "%1$s đã rơi khỏi dây leo xoắn"
+      vines: "%1$s đã rơi khỏi dây leo"
+      weeping_vines: "%1$s đã rơi khỏi dây leo đẫm máu"
+    assist:
+      default: "%1$s bị ép phải rơi bởi %2$s"
+      item: "%1$s bị ép phải rơi do %2$s dùng %3$s"
+    finish:
+      default: "%1$s đã ngã quá sâu và bị kết liễu bởi %2$s"
+      item: "%1$s đã ngã quá sâu và bị kết liễu bởi %2$s sử dụng %3$s"
+    killer: "%1$s bị ép phải rơi"
+deathScreen:
+  quit:
+    confirm: Bạn vẫn chắc chắn muốn thoát chứ?
+  respawn: Hồi sinh
+  score: Điểm số
+  spectate: Theo dõi thế giới
+  title:
+    default: Bạn đã chết!
+    hardcore: Trò chơi kết thúc!
+  titleScreen: Màn hình chính
+entity:
+  minecraft:
+    allay: Allay
+    area_effect_cloud: Mây hiệu ứng khu vực
+    armor_stand: Giá để giáp
+    arrow: Mũi tên
+    axolotl: Axolotl
+    bat: Con dơi
+    bee: Con ong
+    blaze: Quỷ lửa
+    boat: Thuyền
+    cat: Con mèo
+    cave_spider: Nhện hang
+    chest_boat: Thuyền có rương
+    chest_minecart: Xe mỏ có rương
+    chicken: Con gà
+    cod: Cá tuyết
+    command_block_minecart: Xe mỏ có khối điều khiển
+    cow: Con bò
+    creeper: Creeper
+    dolphin: Cá heo
+    donkey: Con lừa
+    dragon_fireball: Cầu lửa của rồng
+    drowned: Kẻ đuối nước
+    egg: Ném trứng
+    elder_guardian: Giám hộ cao niên
+    end_crystal: Pha lê End
+    ender_dragon: Rồng Ender
+    ender_pearl: Ngọc Ender được ném ra
+    enderman: Người Ender
+    endermite: Rận Ender
+    evoker: Kẻ chiêu hồn
+    evoker_fangs: Răng nanh Kẻ chiêu hồn
+    experience_bottle: Chai kinh nghiệm đã ném
+    experience_orb: Quả cầu kinh nghiệm
+    eye_of_ender: Mắt của Ender
+    falling_block: Khối đang rơi
+    fireball: Quả cầu lửa
+    firework_rocket: Pháo hoa
+    fishing_bobber: Phao câu cá
+    fox: Con cáo
+    frog: Con ếch
+    furnace_minecart: Xe mỏ có lò nung
+    ghast: Ghast
+    giant: Người khổng lồ
+    glow_item_frame: Khung vật phẩm phát sáng
+    glow_squid: Mực phát sáng
+    goat: Con dê
+    guardian: Giám hộ
+    hoglin: Hoglin
+    hopper_minecart: Xe mỏ có phễu
+    horse: Con ngựa
+    husk: Quái khô tàn
+    illusioner: Kẻ gây ảo giác
+    iron_golem: Người sắt
+    item: Vật phẩm
+    item_frame: Khung vật phẩm
+    killer_bunny: Thỏ sát nhân
+    leash_knot: Nút xích
+    lightning_bolt: Tia sét
+    llama: Lạc đà không bướu
+    llama_spit: Nước bọt lạc đà không bướu
+    magma_cube: Khối dung nham
+    marker: Vật đánh dấu
+    minecart: Xe mỏ
+    mooshroom: Mooshroom
+    mule: Con la
+    ocelot: Mèo rừng
+    painting: Tranh vẽ
+    panda: Gấu trúc
+    parrot: Con vẹt
+    phantom: Phantom
+    pig: Con heo
+    piglin: Piglin
+    piglin_brute: Piglin hung bạo
+    pillager: Kẻ cướp
+    player: Người chơi
+    polar_bear: Gấu bắc cực
+    potion: Thuốc
+    pufferfish: Cá nóc
+    rabbit: Con thỏ
+    ravager: Quái thú cướp bóc
+    salmon: Cá hồi
+    sheep: Con cừu
+    shulker: Shulker
+    shulker_bullet: Đạn Shulker
+    silverfish: Con nhậy bạc
+    skeleton: Bộ xương
+    skeleton_horse: Ngựa xương
+    slime: Quái vật chất nhờn
+    small_fireball: Quả cầu lửa nhỏ
+    snow_golem: Người tuyết
+    snowball: Bóng tuyết
+    spawner_minecart: Xe mỏ có lồng triệu hồi
+    spectral_arrow: Mũi tên ma quỷ
+    spider: Nhện
+    squid: Con mực
+    stray: Quái lang thang
+    strider: Kẻ sải bước
+    tadpole: Nòng nọc
+    tnt: TNT đã châm ngòi
+    tnt_minecart: Xe mỏ có TNT
+    trader_llama: Lạc đà không bướu của thương nhân
+    trident: Đinh ba
+    tropical_fish:
+      default: Cá nhiệt đới
+      predefined:
+        "0": Cá hề vây da cam
+        "1": Cá đuôi gai mũi dài
+        "2": Cá đuôi gai xanh
+        "3": Cá bướm bốn mắt
+        "4": Cá hoàng đế
+        "5": Cá hề
+        "6": Cá xiêm
+        "7": Cá đạm bì hoàng gia
+        "8": Cá hồng vịnh hoàng đế
+        "9": Cá phèn vàng
+        "10": Cá thù lù
+        "11": Cá bướm hoa
+        "12": Cá mó đốm
+        "13": Cá thiên thần nữ hoàng
+        "14": Cá hoàng đế đỏ
+        "15": Cá Blenny môi đỏ
+        "16": Cá hồng vịnh
+        "17": Cá vây tua
+        "18": Cá hề cà chua
+        "19": Cá nóc gai
+        "20": Cá mó đốm đuôi vàng
+        "21": Cá đuôi gai vàng
+      type:
+        betty: Betty
+        blockfish: Blockfish
+        brinely: Brinely
+        clayfish: Clayfish
+        dasher: Dasher
+        flopper: Flopper
+        glitter: Glitter
+        kob: Kob
+        snooper: Snooper
+        spotty: Spotty
+        stripey: Stripey
+        sunstreak: Sunstreak
+    turtle: Con rùa
+    vex: Hồn ma bay
+    villager:
+      default: Dân làng
+      armorer: Thợ làm giáp
+      butcher: Thợ giết mổ
+      cartographer: Người vẽ bản đồ
+      cleric: Linh mục
+      farmer: Nông dân
+      fisherman: Ngư dân
+      fletcher: Thợ làm cung tên
+      leatherworker: Thợ làm đồ da
+      librarian: Thủ thư
+      mason: Thợ nề
+      nitwit: Thằng đần
+      none: Dân làng
+      shepherd: Người chăn cừu
+      toolsmith: Thợ công cụ
+      weaponsmith: Thợ vũ khí
+    vindicator: Kẻ biện hộ
+    wandering_trader: Thương nhân lang thang
+    warden: Kẻ cai ngục
+    witch: Phù thủy
+    wither: Wither
+    wither_skeleton: Bộ xương Wither
+    wither_skull: Đầu lâu Wither
+    wolf: Chó sói
+    zoglin: Zoglin
+    zombie: Thây ma
+    zombie_horse: Ngựa thây ma
+    zombie_villager: Dân làng thây ma
+    zombified_piglin: Piglin thây ma
+  notFound: "Không rõ thực thể: %s"
+multiplayer:
+  player:
+    joined:
+      default: "%s đã tham gia trò chơi"
+      renamed: "%s (trước đây gọi là %s) đã tham gia trò chơi"
+    left: "%s đã rời trò chơi"

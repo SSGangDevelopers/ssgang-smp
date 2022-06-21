@@ -1,355 +1,221 @@
-# Plugin lang
-plugin:
-  error:
-    threadInterrupted: Plugin thread has been interrupted, some unexpected errors may occurs in the future, be aware!
-  start:
-    localeComplete: Lang file initialization complete.
-    done: Plugin initialization complete. ({time})
-
-bot:
-  start:
-    error:
-      login: Error occurred while logging into the Discord bot.
-      token: Bot token is not set in config.yml, ALL DISCORD INTEGRATION WILL BE DISABLED!
-      channelNotFound: Channel with id {id} can not be found!
-      channelCantTalkIn: Bot don't have permission to talk in {name}({id}).
-    done: Bot logged into Discord successfully ({name}{id})
-  server:
-    start: Server is now online!
-    stop: Server is now offline!
-
-gateway:
-  prefix: "[Discord]"
-  arrow: >
-
-# Minecraft lang
 advancements:
   adventure:
     adventuring_time:
-      description: Discover every biome
       title: Adventuring Time
     arbalistic:
-      description: Kill five unique mobs with one crossbow shot
       title: Arbalistic
     avoid_vibration:
-      description: Sneak near a Sculk Sensor or Warden to prevent it from detecting you
       title: Sneak 100
     bullseye:
-      description: Hit the bullseye of a Target block from at least 30 meters away
       title: Bullseye
     fall_from_world_height:
-      description: Free fall from the top of the world (build limit) to the bottom of
-        the world and survive
       title: Caves & Cliffs
     hero_of_the_village:
-      description: Successfully defend a village from a raid
       title: Hero of the Village
     honey_block_slide:
-      description: Jump into a Honey Block to break your fall
       title: Sticky Situation
     kill_a_mob:
-      description: Kill any hostile monster
       title: Monster Hunter
     kill_all_mobs:
-      description: Kill one of every hostile monster
       title: Monsters Hunted
     kill_mob_near_sculk_catalyst:
-      description: Kill a mob near a Sculk Catalyst
       title: It Spreads
     lightning_rod_with_villager_no_fire:
-      description: Protect a Villager from an undesired shock without starting a fire
       title: Surge Protector
     ol_betsy:
-      description: Shoot a Crossbow
       title: Ol' Betsy
     play_jukebox_in_meadows:
-      description: Make the Meadows come alive with the sound of music from a Jukebox
       title: Sound of Music
     root:
-      description: Adventure, exploration and combat
       title: Adventure
     shoot_arrow:
-      description: Shoot something with an Arrow
       title: Take Aim
     sleep_in_bed:
-      description: Sleep in a Bed to change your respawn point
       title: Sweet Dreams
     sniper_duel:
-      description: Kill a Skeleton from at least 50 meters away
       title: Sniper Duel
     spyglass_at_dragon:
-      description: Look at the Ender Dragon through a Spyglass
       title: Is It a Plane?
     spyglass_at_ghast:
-      description: Look at a Ghast through a Spyglass
       title: Is It a Balloon?
     spyglass_at_parrot:
-      description: Look at a Parrot through a Spyglass
       title: Is It a Bird?
     summon_iron_golem:
-      description: Summon an Iron Golem to help defend a village
       title: Hired Help
     throw_trident:
-      description: |-
-        Throw a Trident at something.
-        Note: Throwing away your only weapon is not a good idea.
       title: A Throwaway Joke
     totem_of_undying:
-      description: Use a Totem of Undying to cheat death
       title: Postmortal
     trade:
-      description: Successfully trade with a Villager
       title: What a Deal!
     trade_at_world_height:
-      description: Trade with a Villager at the build height limit
       title: Star Trader
     two_birds_one_arrow:
-      description: Kill two Phantoms with a piercing Arrow
       title: Two Birds, One Arrow
     very_very_frightening:
-      description: Strike a Villager with lightning
       title: Very Very Frightening
     voluntary_exile:
-      description: |-
-        Kill a raid captain.
-        Maybe consider staying away from villages for the time being...
       title: Voluntary Exile
     walk_on_powder_snow_with_leather_boots:
-      description: Walk on Powder Snow...without sinking in it
       title: Light as a Rabbit
     whos_the_pillager_now:
-      description: Give a Pillager a taste of their own medicine
       title: Who's the Pillager Now?
   empty: There doesn't seem to be anything here...
   end:
     dragon_breath:
-      description: Collect Dragon's Breath in a Glass Bottle
       title: You Need a Mint
     dragon_egg:
-      description: Hold the Dragon Egg
       title: The Next Generation
     elytra:
-      description: Find Elytra
       title: Sky's the Limit
     enter_end_gateway:
-      description: Escape the island
       title: Remote Getaway
     find_end_city:
-      description: Go on in, what could happen?
       title: The City at the End of the Game
     kill_dragon:
-      description: Good luck
       title: Free the End
     levitate:
-      description: Levitate up 50 blocks from the attacks of a Shulker
       title: Great View From Up Here
     respawn_dragon:
-      description: Respawn the Ender Dragon
       title: The End... Again...
     root:
-      description: Or the beginning?
       title: The End
   husbandry:
     allay_deliver_cake_to_note_block:
-      description: Have an Allay drop a Cake at a Note Block
       title: Birthday Song
     allay_deliver_item_to_player:
-      description: Have an Allay deliver items to you
       title: You've Got a Friend in Me
     axolotl_in_a_bucket:
-      description: Catch an Axolotl in a Bucket
       title: The Cutest Predator
     balanced_diet:
-      description: Eat everything that is edible, even if it's not good for you
       title: A Balanced Diet
     breed_all_animals:
-      description: Breed all the animals!
       title: Two by Two
     breed_an_animal:
-      description: Breed two animals together
       title: The Parrots and the Bats
     complete_catalogue:
-      description: Tame all Cat variants!
       title: A Complete Catalogue
     fishy_business:
-      description: Catch a fish
       title: Fishy Business
     froglights:
-      description: Have all Froglights in your inventory
       title: With Our Powers Combined!
     kill_axolotl_target:
-      description: Team up with an Axolotl and win a fight
       title: The Healing Power of Friendship!
     leash_all_frog_variants:
-      description: Get each Frog variant on a Lead
       title: When the Squad Hops into Town
     make_a_sign_glow:
-      description: Make the text of a Sign glow
       title: Glow and Behold!
     netherite_hoe:
-      description: Use a Netherite Ingot to upgrade a Hoe, and then reevaluate your
-        life choices
       title: Serious Dedication
     plant_seed:
-      description: Plant a seed and watch it grow
       title: A Seedy Place
     ride_a_boat_with_a_goat:
-      description: Get in a Boat and float with a Goat
       title: Whatever Floats Your Goat!
     root:
-      description: The world is full of friends and food
       title: Husbandry
     safely_harvest_honey:
-      description: Use a Campfire to collect Honey from a Beehive using a Bottle
-        without aggravating the Bees
       title: Bee Our Guest
     silk_touch_nest:
-      description: Move a Bee Nest, with 3 Bees inside, using Silk Touch
       title: Total Beelocation
     tactical_fishing:
-      description: Catch a Fish... without a Fishing Rod!
       title: Tactical Fishing
     tadpole_in_a_bucket:
-      description: Catch a Tadpole in a Bucket
       title: Bukkit Bukkit
     tame_an_animal:
-      description: Tame an animal
       title: Best Friends Forever
     wax_off:
-      description: Scrape Wax off of a Copper block!
       title: Wax Off
     wax_on:
-      description: Apply Honeycomb to a Copper block!
       title: Wax On
   nether:
     all_effects:
-      description: Have every effect applied at the same time
       title: How Did We Get Here?
     all_potions:
-      description: Have every potion effect applied at the same time
       title: A Furious Cocktail
     brew_potion:
-      description: Brew a Potion
       title: Local Brewery
     charge_respawn_anchor:
-      description: Charge a Respawn Anchor to the maximum
       title: Not Quite "Nine" Lives
     create_beacon:
-      description: Construct and place a Beacon
       title: Bring Home the Beacon
     create_full_beacon:
-      description: Bring a Beacon to full power
       title: Beaconator
     distract_piglin:
-      description: Distract Piglins with gold
       title: Oh Shiny
     explore_nether:
-      description: Explore all Nether biomes
       title: Hot Tourist Destinations
     fast_travel:
-      description: Use the Nether to travel 7 km in the Overworld
       title: Subspace Bubble
     find_bastion:
-      description: Enter a Bastion Remnant
       title: Those Were the Days
     find_fortress:
-      description: Break your way into a Nether Fortress
       title: A Terrible Fortress
     get_wither_skull:
-      description: Obtain a Wither Skeleton's skull
       title: Spooky Scary Skeleton
     loot_bastion:
-      description: Loot a Chest in a Bastion Remnant
       title: War Pigs
     netherite_armor:
-      description: Get a full suit of Netherite armor
       title: Cover Me in Debris
     obtain_ancient_debris:
-      description: Obtain Ancient Debris
       title: Hidden in the Depths
     obtain_blaze_rod:
-      description: Relieve a Blaze of its rod
       title: Into Fire
     obtain_crying_obsidian:
-      description: Obtain Crying Obsidian
       title: Who is Cutting Onions?
     return_to_sender:
-      description: Destroy a Ghast with a fireball
       title: Return to Sender
     ride_strider:
-      description: Ride a Strider with a Warped Fungus on a Stick
       title: This Boat Has Legs
     ride_strider_in_overworld_lava:
-      description: Take a Strider for a loooong ride on a lava lake in the Overworld
       title: Feels Like Home
     root:
-      description: Bring summer clothes
       title: Nether
     summon_wither:
-      description: Summon the Wither
       title: Withering Heights
     uneasy_alliance:
-      description: Rescue a Ghast from the Nether, bring it safely home to the
-        Overworld... and then kill it
       title: Uneasy Alliance
     use_lodestone:
-      description: Use a Compass on a Lodestone
       title: Country Lode, Take Me Home
   sad_label: :(
   story:
     cure_zombie_villager:
-      description: Weaken and then cure a Zombie Villager
       title: Zombie Doctor
     deflect_arrow:
-      description: Deflect a projectile with a Shield
       title: Not Today, Thank You
     enchant_item:
-      description: Enchant an item at an Enchanting Table
       title: Enchanter
     enter_the_end:
-      description: Enter the End Portal
       title: The End?
     enter_the_nether:
-      description: Build, light and enter a Nether Portal
       title: We Need to Go Deeper
     follow_ender_eye:
-      description: Follow an Eye of Ender
       title: Eye Spy
     form_obsidian:
-      description: Obtain a block of Obsidian
       title: Ice Bucket Challenge
     iron_tools:
-      description: Upgrade your Pickaxe
       title: Isn't It Iron Pick
     lava_bucket:
-      description: Fill a Bucket with lava
       title: Hot Stuff
     mine_diamond:
-      description: Acquire diamonds
       title: Diamonds!
     mine_stone:
-      description: Mine Stone with your new Pickaxe
       title: Stone Age
     obtain_armor:
-      description: Protect yourself with a piece of iron armor
       title: Suit Up
     root:
-      description: The heart and story of the game
       title: Minecraft
     shiny_gear:
-      description: Diamond armor saves lives
       title: Cover Me with Diamonds
     smelt_iron:
-      description: Smelt an Iron Ingot
       title: Acquire Hardware
     upgrade_tools:
-      description: Construct a better Pickaxe
       title: Getting an Upgrade
   toast:
     challenge: Challenge Complete!
     goal: Goal Reached!
     task: Advancement Made!
 chat:
+  square_brackets: "[%s]"
   type:
     advancement:
       challenge: "%s has completed the challenge %s"

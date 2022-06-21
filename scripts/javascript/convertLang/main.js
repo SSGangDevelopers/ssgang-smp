@@ -1,6 +1,7 @@
 import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from "fs";
 import path from "path";
 import YAML from "yaml";
+import config from "./config.json" assert { type: "json" };
 
 export default function run(options) {
 	const taskRootDir = options.taskRootDir;
@@ -8,12 +9,29 @@ export default function run(options) {
 	const inputDir = path.join(taskRootDir, "input");
 	const outputDir = path.join(taskRootDir, "output");
 
-	const reqPaths = ["advancements", "entity", "multiplayer.player", "death", "chat.type.advancement"];
-
-	const blacklistedPaths = [];
-
 	const join = (target, data) => {
-		if (!blacklistedPaths.includes(data.root)) {
+		if (!config.blacklistedPaths.includes(data.root)) {
+			// if (!target[data.root]) {
+			// 	if (typeof target === "string") {
+			// 		let backup = target;
+			// 		target = {};
+			// 		target["default"] = backup;
+			// 	}
+
+			// 	target[data.root] = data.object;
+			// } else {
+			// 	let root_1 = Object.keys(data.object)[0];
+
+			// 	let result_1 = target[data.root];
+
+			// 	let result_2 = join(result_1, {
+			// 		root: root_1,
+			// 		object: data.object[root_1],
+			// 	});
+
+			// 	target[data.root] = result_2;
+			// }
+			let child_root = Object.keys(data.object)[0];
 			if (!target[data.root]) {
 				if (typeof target === "string") {
 					let backup = target;
@@ -21,18 +39,24 @@ export default function run(options) {
 					target["default"] = backup;
 				}
 
-				target[data.root] = data.object;
+				if (typeof data.object === "string") {
+					target[data.root] = data.object;
+				} else {
+					target[data.root] = join(
+						{},
+						{
+							root: child_root,
+							object: data.object[child_root],
+						}
+					);
+				}
 			} else {
-				let root_1 = Object.keys(data.object)[0];
-
-				let result_1 = target[data.root];
-
-				let result_2 = join(result_1, {
-					root: root_1,
-					object: data.object[root_1],
+				let child_result = join(target[data.root], {
+					root: child_root,
+					object: data.object[child_root],
 				});
 
-				target[data.root] = result_2;
+				target[data.root] = child_result;
 			}
 		}
 
@@ -44,8 +68,8 @@ export default function run(options) {
 
 		const keys = Object.keys(lang).filter((key) => {
 			let i = 0;
-			while (i < reqPaths.length) {
-				if (key.startsWith(reqPaths[i])) return true;
+			while (i < config.reqPaths.length) {
+				if (key.startsWith(config.reqPaths[i])) return true;
 				i++;
 			}
 			return false;

@@ -1,7 +1,6 @@
 package io.github.ssgangdevelopers.utils;
 
 import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.TextComponent;
 import net.kyori.adventure.text.TranslatableComponent;
 import net.kyori.adventure.text.serializer.plain.PlainTextComponentSerializer;
 import org.jetbrains.annotations.Contract;
@@ -41,21 +40,13 @@ public class StringUtils {
 	 */
 	@NotNull
 	public static String serializeComponent(@NotNull Component component) {
-		String output;
-
-		if (component instanceof TextComponent) {
-			output = PlainTextComponentSerializer.plainText().serialize(component);
-		} else {
-			if (component instanceof TranslatableComponent transComp) {
-				String rawValue = LangUtils.get(transComp.key());
-				List<String> args = new ArrayList<>(3);
-				transComp.args().forEach((comp) -> args.add(serializeComponent(comp)));
-				output = String.format(rawValue, args.toArray());
-			} else {
-				output = PlainTextComponentSerializer.plainText().serialize(component);
-			}
+		if (component instanceof TranslatableComponent transComp) {
+			String rawValue = LangUtils.get(transComp.key());
+			List<String> args = new ArrayList<>(3); // A component can only have
+			transComp.args().forEach((comp) -> args.add(serializeComponent(comp)));
+			return String.format(rawValue, args.toArray());
 		}
 
-		return output;
+		return PlainTextComponentSerializer.plainText().serialize(component);
 	}
 }

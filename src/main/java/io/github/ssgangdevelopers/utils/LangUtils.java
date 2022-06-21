@@ -14,7 +14,7 @@ import java.util.HashMap;
  * Represents a LangUtils to get localized display messages.
  */
 public class LangUtils {
-	private static final String DEFAULT_FILE_NAME = "lang/lang-en.yml";
+	private static final File DEFAULT_LANG_DIR = new File(SSGangSMP.getInstance().getDataFolder(), "lang/en");
 	private static final HashMap<String, Object> data = new HashMap<>();
 
 	/**
@@ -23,7 +23,7 @@ public class LangUtils {
 	 * @param file Language file to load.
 	 */
 	public static void init(@NotNull File file) {
-		SSGangSMP.getInstance().getSLF4JLogger().info("Loading language properties from {}", file.getName());
+		SSGangSMP.getInstance().getSLF4JLogger().info("Loading language properties from {}", file.getPath());
 		checkAndLoad(file);
 	}
 
@@ -32,9 +32,9 @@ public class LangUtils {
 		try {
 			data.putAll(new Yaml().load(new FileReader(file, StandardCharsets.UTF_8)));
 		} catch (IOException e) {
-			if (!file.getName().equals(DEFAULT_FILE_NAME)) {
+			if (!file.getParentFile().equals(DEFAULT_LANG_DIR)) {
 				plugin.getSLF4JLogger().warn("Preferred lang file could not loaded, using default lang file.");
-				checkAndLoad(new File(plugin.getDataFolder(), DEFAULT_FILE_NAME));
+				checkAndLoad(new File(DEFAULT_LANG_DIR, file.getName()));
 			} else {
 				plugin.getSLF4JLogger().error("Could not load default language file, the plugin will be disabled as a result.");
 				SSGangSMP.selfDestruct();
