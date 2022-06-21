@@ -92,57 +92,55 @@ public class SSGangSMP extends JavaPlugin {
 			return;
 		}
 
-		getServer().getScheduler().runTaskAsynchronously(this, () -> {
-			String chatChannelId = getConfig().getString("chatChannelId");
-			assert chatChannelId != null;
+		String chatChannelId = getConfig().getString("chatChannelId");
+		assert chatChannelId != null;
 
-			try {
-				jda = JDABuilder
-								.create(GatewayIntent.GUILD_MESSAGES)
-								.disableCache(Arrays.asList(CacheFlag.values()))
-								.setChunkingFilter(ChunkingFilter.NONE)
-								.setLargeThreshold(20)
-								.setToken(botToken)
-								.build()
-								.awaitReady();
-			} catch (LoginException e) {
-				logger.error(LangUtils.get("bot.start.error.login"), e);
-				selfDestruct();
-			} catch (InterruptedException e) {
-				logger.warn(LangUtils.get("plugin.error.threadInterrupted"));
-			}
-			if (!this.isEnabled()) return; // Bot login failed
-			chatChannel = jda.getTextChannelById(chatChannelId);
+		try {
+			jda = JDABuilder
+							.create(GatewayIntent.GUILD_MESSAGES)
+							.disableCache(Arrays.asList(CacheFlag.values()))
+							.setChunkingFilter(ChunkingFilter.NONE)
+							.setLargeThreshold(20)
+							.setToken(botToken)
+							.build()
+							.awaitReady();
+		} catch (LoginException e) {
+			logger.error(LangUtils.get("bot.start.error.login"), e);
+			selfDestruct();
+		} catch (InterruptedException e) {
+			logger.warn(LangUtils.get("plugin.error.threadInterrupted"));
+		}
+		if (!this.isEnabled()) return; // Bot login failed
+		chatChannel = jda.getTextChannelById(chatChannelId);
 
-			if (chatChannel == null) {
+		if (chatChannel == null) {
+			logger.warn(LangUtils.get(
+							"bot.start.error.channelNotFound",
+							new String[]{"id", chatChannelId}
+			));
+		} else {
+			if (!chatChannel.canTalk()) {
 				logger.warn(LangUtils.get(
-								"bot.start.error.channelNotFound",
+								"bot.start.error.channelCantTalkIn",
+								new String[]{"name", "#" + chatChannel.getName()},
 								new String[]{"id", chatChannelId}
 				));
 			} else {
-				if (!chatChannel.canTalk()) {
-					logger.warn(LangUtils.get(
-									"bot.start.error.channelCantTalkIn",
-									new String[]{"name", "#" + chatChannel.getName()},
-									new String[]{"id", chatChannelId}
-					));
-				} else {
-					ChatBridging.registerListeners();
-					EventsBridging.registerListeners();
+				ChatBridging.registerListeners();
+				EventsBridging.registerListeners();
 
-					EmbedBuilder embedBuilder = new EmbedBuilder();
-					embedBuilder.setColor(ColorUtils.DISCORD.GREEN);
-					embedBuilder.setTitle(LangUtils.get("bot.server.start"));
-					chatChannel.sendMessageEmbeds(embedBuilder.build()).queue();
-				}
+				EmbedBuilder embedBuilder = new EmbedBuilder();
+				embedBuilder.setColor(ColorUtils.DISCORD.GREEN);
+				embedBuilder.setTitle(LangUtils.get("bot.server.start"));
+				chatChannel.sendMessageEmbeds(embedBuilder.build()).queue();
 			}
+		}
 
-			logger.info(LangUtils.get(
-							"bot.start.done",
-							new String[]{"name", jda.getSelfUser().getName()},
-							new String[]{"id", "#" + jda.getSelfUser().getId()}
-			));
-		});
+		logger.info(LangUtils.get(
+						"bot.start.done",
+						new String[]{"name", jda.getSelfUser().getName()},
+						new String[]{"id", "#" + jda.getSelfUser().getId()}
+		));
 	}
 
 	/**
