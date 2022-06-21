@@ -59,7 +59,8 @@ public class SSGangSMP extends JavaPlugin {
 		// Load locale - End
 
 		// Load JDA - Start
-		getServer().getScheduler().runTaskAsynchronously(this, this::initDiscord); // run asynchronously to optimize plugin load speed
+		Thread initDiscord = new Thread(this::initDiscord, "SSGangSMP - Discord initialization");
+		initDiscord.start();
 		// Load JDA - End
 
 		// Plugin initialization complete
