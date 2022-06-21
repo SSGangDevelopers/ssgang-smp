@@ -11,26 +11,6 @@ export default function run(options) {
 
 	const join = (target, data) => {
 		if (!config.blacklistedPaths.includes(data.root)) {
-			// if (!target[data.root]) {
-			// 	if (typeof target === "string") {
-			// 		let backup = target;
-			// 		target = {};
-			// 		target["default"] = backup;
-			// 	}
-
-			// 	target[data.root] = data.object;
-			// } else {
-			// 	let root_1 = Object.keys(data.object)[0];
-
-			// 	let result_1 = target[data.root];
-
-			// 	let result_2 = join(result_1, {
-			// 		root: root_1,
-			// 		object: data.object[root_1],
-			// 	});
-
-			// 	target[data.root] = result_2;
-			// }
 			let child_root = Object.keys(data.object)[0];
 			if (!target[data.root]) {
 				if (typeof target === "string") {
@@ -105,7 +85,7 @@ export default function run(options) {
 
 		if (!existsSync(outputDir_1)) mkdirSync(outputDir_1);
 
-		writeFileSync(path.join(outputDir_1, "output.yaml"), YAML.stringify(result));
+		writeFileSync(path.join(outputDir_1, "output.yml"), YAML.stringify(result));
 
 		const outputJSON = {};
 		keys.forEach((key) => {
