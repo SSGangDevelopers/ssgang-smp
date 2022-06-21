@@ -59,8 +59,9 @@ public class SSGangSMP extends JavaPlugin {
 		// Load locale - End
 
 		// Load JDA - Start
-		Thread initDiscord = new Thread(this::initDiscord, "SSGangSMP - Discord initialization");
-		initDiscord.start();
+//		Thread initDiscord = new Thread(this::initDiscord, "SSGangSMP - Discord initialization");
+//		initDiscord.start();
+		initDiscord();
 		// Load JDA - End
 
 		// Plugin initialization complete
