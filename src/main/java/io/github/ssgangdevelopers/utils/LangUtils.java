@@ -22,7 +22,7 @@ public class LangUtils {
 	 *
 	 * @param file Language file to load.
 	 */
-	public static void init(@NotNull File file) {
+	public static void load(@NotNull File file) {
 		SSGangSMP.getInstance().getSLF4JLogger().info("Loading language properties from {}", file.getPath());
 		checkAndLoad(file);
 	}

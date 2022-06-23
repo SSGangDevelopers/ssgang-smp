@@ -50,18 +50,17 @@ public class SSGangSMP extends JavaPlugin {
 			language = "en";
 		}
 		File messagesFolder = new File(new File(getDataFolder(), "lang"), language);
-		LangUtils.init(new File(messagesFolder, "plugin-lang.yml"));
+		LangUtils.load(new File(messagesFolder, "plugin-lang.yml"));
 		if (!this.isEnabled()) return;
-		LangUtils.init(new File(messagesFolder, "minecraft-lang.yml"));
+		LangUtils.load(new File(messagesFolder, "minecraft-lang.yml"));
 		if (!this.isEnabled()) return;
 
 		logger.info(LangUtils.get("plugin.start.localeComplete"));
 		// Load locale - End
 
 		// Load JDA - Start
-//		Thread initDiscord = new Thread(this::initDiscord, "SSGangSMP - Discord initialization");
-//		initDiscord.start();
-		initDiscord();
+		Thread initDiscord = new Thread(this::initDiscord, "SSGangSMP - Discord initialization");
+		initDiscord.start();
 		// Load JDA - End
 
 		// Plugin initialization complete
